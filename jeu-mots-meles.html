@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="fr-CH">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="assets/logo.png" type="image/png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/site.css">
+
+  <title>Mots meles | Parcours des jeux</title>
+  <link rel="stylesheet" href="css/pages/mots-meles.css">
+</head>
+<body>
+  <div id="header-slot"></div>
+  <div class="layout">
+    <main class="main" id="main">
+      <div class="container">
+
+        <div class="page-header fade-up">
+          <div class="page-icon">🔍</div>
+          <h1>Mots meles</h1>
+          <p>Trouve les mots caches dans la grille.</p>
+        </div>
+
+        <!-- KPIs -->
+        <div class="mm-kpi-row fade-up delay-1">
+          <div class="mm-kpi"><div class="val" id="kpiFound">0</div><div class="lbl">Trouves</div></div>
+          <div class="mm-kpi"><div class="val" id="kpiTotal">0</div><div class="lbl">Total</div></div>
+          <div class="mm-kpi"><div class="val" id="kpiXP">0</div><div class="lbl">XP</div></div>
+          <div class="mm-kpi"><div class="val mm-timer" id="kpiTimer">0:00</div><div class="lbl">Temps</div></div>
+        </div>
+
+        <!-- Zone de jeu -->
+        <div class="game-zone fade-up delay-2" id="gameZone">
+
+          <div class="grid-selector" id="gridSelector"></div>
+          <div class="quiz-top">
+            <div class="quiz-progress-label" id="mmSessionProgress">Progression 0/0</div>
+            <div class="quiz-timer" id="prog-pct">0%</div>
+          </div>
+          <div class="series-progress">
+            <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+          </div>
+          <div class="category-pill-row">
+            <span class="badge badge-blue" id="mmCategory"></span>
+            <span class="badge" id="mmDirections"></span>
+          </div>
+
+          <div class="mm-layout">
+            <!-- Grille -->
+            <div>
+              <div class="mm-grid-wrap">
+                <div class="mm-grid" id="mmGrid"></div>
+              </div>
+              <div class="mm-feedback" id="mmFeedback"></div>
+              <div class="controls-bar">
+                <button class="btn btn-ghost btn-sm" id="btnHint" type="button">💡 Indice</button>
+                <button class="btn btn-ghost btn-sm" id="btnReveal" type="button">👁 Tout reveler</button>
+                <button class="btn btn-primary btn-sm" id="btnFinish" type="button">Terminer</button>
+                <button class="btn btn-secondary btn-sm" id="btnGenerate" type="button">Nouvelle grille</button>
+              </div>
+            </div>
+
+            <!-- Liste des mots -->
+            <div class="words-panel">
+              <div class="words-panel-title">Mots a trouver</div>
+              <div class="word-list" id="wordList"></div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Resultats finaux -->
+        <div class="result-zone fade-up" id="resultZone">
+          <div class="card card-accent card-lg" style="text-align:center;">
+            <div style="font-size:56px;margin-bottom:16px;" id="resEmoji">🔍</div>
+            <h2 style="font-family:var(--font-head);font-size:24px;font-weight:800;margin-bottom:8px;" id="resTitle">Grille terminee !</h2>
+            <p style="color:var(--text2);margin-bottom:28px;" id="resSubtitle">Voici vos resultats.</p>
+            <div class="kpi-grid" style="margin-bottom:28px;">
+              <div class="kpi-card"><div class="kpi-value" id="resFound">0</div><div class="kpi-label">Mots trouves</div></div>
+              <div class="kpi-card"><div class="kpi-value" id="resTime">—</div><div class="kpi-label">Temps</div></div>
+              <div class="kpi-card"><div class="kpi-value" id="resXP">0</div><div class="kpi-label">XP</div></div>
+              <div class="kpi-card"><div class="kpi-value" id="resAccuracy">—</div><div class="kpi-label">Precision</div></div>
+            </div>
+            <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+            <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:12px;">
+              <button class="btn btn-ghost btn-sm btn-share" type="button">Copier mon resume</button>
+            </div>
+              <button class="btn btn-primary btn-lg" id="btnNextExercise" type="button">Exercice suivant</button>
+              <button class="btn btn-secondary btn-lg" id="btnRestart" type="button">Autre grille</button>
+              <a href="accueil.html" class="btn btn-secondary btn-lg">← Accueil</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+    <div id="footer-slot"></div>
+  </div>
+
+  <script src="js/data/mots-meles-data.js"></script>
+  <script src="js/score.js"></script>
+  <script src="js/exercises-config.js"></script>
+  <script src="js/stages.js"></script>
+  <script src="js/exercise-utils.js"></script>
+  <script src="js/automation.js"></script>
+  <script src="js/shared.js"></script>
+  <script src="js/ui.js"></script>
+  <script>
+  'use strict';
+
+  /* =========================================================
+     FONCTION D'ACCESSIBILITE CLAVIER
+  ========================================================= */
+  function makeKeyboardAccessible(el, clickHandler) {
+    el.setAttribute('tabindex', '0');
+    el.setAttribute('role', 'button');
+    el.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        clickHandler();
+      }
+    });
+  }
+
+  /* =========================================================
+     PUZZLES — grilles 12×12, mots places manuellement
+     Directions : H=horizontal, V=vertical, D=diagonal ↘,
+                  HR=horizontal inverse, VR=vertical inverse
+  ========================================================= */
+  const PUZZLES = window.MOTS_MELES_DATA;
+
+  const COLORS = ['found-0','found-1','found-2','found-3','found-4','found-5','found-6','found-7'];
+  const PAGE_ID = 'jeu-mots-meles';
+
+  /* =========================================================
+     ETAT
+  ========================================================= */
+  let state = {
+    puzzle:      null,
+    grid:        [],    // grid[r][c] = lettre
+    placed:      [],    // [{word, r, c, dir, cells:[{r,c}], colorIdx, found}]
+    selecting:   false,
+    selStart:    null,  // {r,c}
+    selCurrent:  null,  // {r,c}
+    selCells:    [],    // [{r,c}] selection en cours
+    found:       0,
+    xp:          0,
+    errors:      0,
+    timerSec:    0,
+    timerHandle: null,
+    startTime:   null,
+  };
+  let sessionIdx = 0;
+  let sessionFound = 0;
+  let sessionXP = 0;
+  let sessionErrors = 0;
+  let sessionTimeSec = 0;
+  let sessionTotalWords = 0;
+  let sessionPuzzles = [];
+
+  let xpRulesShown = false;
+
+  function updateProgressUI(done, total) {
+    const pct = total > 0 ? Math.round((done / total) * 100) : 0;
+    document.getElementById('prog-pct').textContent = pct + '%';
+    document.getElementById('progressFill').style.width = pct + '%';
+  }
+
+  function formatThemeLabel(theme) {
+    const normalized = String(theme || '').toLowerCase();
+    if (normalized.includes('num')) return 'D\u00E9marches num\u00E9riques';
+    if (normalized.includes('emploi')) return 'Emploi';
+    if (normalized.includes('transport')) return 'Transports';
+    if (normalized.includes('sant')) return 'Sant\u00E9';
+    if (normalized.includes('logement')) return 'Logement';
+    return String(theme || '');
+  }
+
+  /* =========================================================
+     DIRECTIONS
+  ========================================================= */
+  const DIR_DELTA = {
+    H:  { dr: 0, dc: 1  },
+    HR: { dr: 0, dc: -1 },
+    V:  { dr: 1, dc: 0  },
+    VR: { dr: -1, dc: 0 },
+    D:  { dr: 1, dc: 1  },
+    DR: { dr: 1, dc: -1 },
+  };
+
+  function getProgressiveDirections() {
+    const metrics = typeof ScoreManager !== 'undefined' ? ScoreManager.readMetrics(PAGE_ID) : { correct: 0 };
+    if (metrics.correct < 12) return ['H', 'V'];
+    if (metrics.correct < 30) return ['H', 'V', 'D'];
+    return ['H', 'HR', 'V', 'VR', 'D', 'DR'];
+  }
+
+  function createGeneratedPuzzle() {
+    const size = 12;
+    const directions = getProgressiveDirections();
+    const bank = [...new Set(PUZZLES.flatMap(p => p.words.map(w => w.word)).filter(w => w.length <= size))];
+    const chosen = bank.sort(() => Math.random() - .5).slice(0, 8);
+    const occupied = Array.from({ length: size }, () => Array(size).fill(''));
+    const words = [];
+    chosen.forEach(word => {
+      for (let attempt = 0; attempt < 180; attempt++) {
+        const dir = directions[Math.floor(Math.random() * directions.length)];
+        const { dr, dc } = DIR_DELTA[dir];
+        const r = Math.floor(Math.random() * size);
+        const c = Math.floor(Math.random() * size);
+        const cells = [...word].map((letter, i) => ({ r: r + dr * i, c: c + dc * i, letter }));
+        const valid = cells.every(pos => pos.r >= 0 && pos.r < size && pos.c >= 0 && pos.c < size && (!occupied[pos.r][pos.c] || occupied[pos.r][pos.c] === pos.letter));
+        if (!valid) continue;
+        cells.forEach(pos => { occupied[pos.r][pos.c] = pos.letter; });
+        words.push({ word, r, c, dir });
+        break;
+      }
+    });
+    return { name: 'Grille générée', difficulty: directions.length > 3 ? 'hard' : 'medium', theme: 'révision', size, words };
+  }
+
+  function generatePuzzle() {
+    const puzzle = createGeneratedPuzzle();
+    if (puzzle.words.length < 5) {
+      showToast('La génération a échoué. Réessaie.', 'error');
+      return;
+    }
+    sessionPuzzles.push(puzzle);
+    sessionTotalWords += puzzle.words.length;
+    loadPuzzle(sessionPuzzles.length - 1);
+    showToast('Nouvelle grille générée.', 'success');
+  }
+
+  /* =========================================================
+     CONSTRUCTION DE LA GRILLE
+  ========================================================= */
+  function buildGrid(puzzle) {
+    const S = puzzle.size;
+    // Grille vide
+    const grid = [];
+    for (let r = 0; r < S; r++) {
+      grid[r] = [];
+      for (let c = 0; c < S; c++) grid[r][c] = '';
+    }
+
+    // Placer les mots
+    const placed = [];
+    puzzle.words.forEach((w, idx) => {
+      const { dr, dc } = DIR_DELTA[w.dir];
+      const cells = [];
+      let ok = true;
+      for (let i = 0; i < w.word.length; i++) {
+        const r = w.r + dr * i;
+        const c = w.c + dc * i;
+        if (r < 0 || r >= S || c < 0 || c >= S) { ok = false; break; }
+        if (grid[r][c] !== '' && grid[r][c] !== w.word[i]) { ok = false; break; }
+        cells.push({ r, c });
+      }
+      if (!ok) return;
+      cells.forEach((pos, i) => { grid[pos.r][pos.c] = w.word[i]; });
+      placed.push({ word: w.word, r: w.r, c: w.c, dir: w.dir, cells, colorIdx: idx % COLORS.length, found: false });
+    });
+
+    // Remplir les cases vides avec des lettres aleatoires
+    const ALPHA = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    for (let r = 0; r < S; r++) {
+      for (let c = 0; c < S; c++) {
+        if (!grid[r][c]) grid[r][c] = ALPHA[Math.floor(Math.random() * ALPHA.length)];
+      }
+    }
+
+    return { grid, placed };
+  }
+
+  /* =========================================================
+     RENDU
+  ========================================================= */
+  function renderGrid() {
+    const S    = state.puzzle.size;
+    const el   = document.getElementById('mmGrid');
+    el.style.gridTemplateColumns = `repeat(${S}, 36px)`;
+    el.innerHTML = '';
+
+    for (let r = 0; r < S; r++) {
+      for (let c = 0; c < S; c++) {
+        const cell = document.createElement('div');
+        cell.className       = 'mm-cell';
+        cell.id              = `mc-${r}-${c}`;
+        cell.textContent     = state.grid[r][c];
+        cell.dataset.r       = r;
+        cell.dataset.c       = c;
+
+        const handleCellClick = () => {
+          const pointerDownEvent = new PointerEvent('pointerdown', { clientX: 0, clientY: 0 });
+          onPointerDown(pointerDownEvent);
+        };
+        cell.addEventListener('pointerdown', onPointerDown);
+        makeKeyboardAccessible(cell, handleCellClick);
+        el.appendChild(cell);
+      }
+    }
+
+    el.addEventListener('pointermove',  onPointerMove);
+    el.addEventListener('pointerup',    onPointerUp);
+    el.addEventListener('pointerleave', onPointerUp);
+
+    refreshFoundColors();
+  }
+
+  function renderWordList() {
+    const list = document.getElementById('wordList');
+    list.innerHTML = '';
+    state.placed.forEach(p => {
+      const tag = document.createElement('div');
+      tag.className   = 'word-tag' + (p.found ? 'found' : '');
+      tag.id          = 'wtag-' + p.word;
+      if (p.found) {
+        tag.innerHTML = `<span class="check">✅</span>${p.word}`;
+        tag.style.borderColor = getColorHex(p.colorIdx);
+      } else {
+        tag.textContent = p.word;
+      }
+      list.appendChild(tag);
+    });
+  }
+
+  function getColorHex(idx) {
+    const colors = ['#34d399','#7c5ff5','#f59e0b','#f87171','#14b8a6','#fb923c','#6366f1','#ec4899'];
+    return colors[idx % colors.length];
+  }
+
+  function refreshFoundColors() {
+    state.placed.forEach(p => {
+      if (!p.found) return;
+      p.cells.forEach(pos => {
+        const el = document.getElementById(`mc-${pos.r}-${pos.c}`);
+        if (el) {
+          el.className = 'mm-cell found ' + COLORS[p.colorIdx];
+        }
+      });
+    });
+  }
+
+  /* =========================================================
+     SELECTION — pointermove sur la grille + elementFromPoint
+  ========================================================= */
+  function cellAt(r, c) { return document.getElementById(`mc-${r}-${c}`); }
+
+  function getCellFromPoint(x, y) {
+    // Temporairement masquer l'element sous le curseur pour trouver la cellule
+    const el = document.elementFromPoint(x, y);
+    if (!el) return null;
+    // Cherche la cellule dans la hierarchie (la cellule elle-meme ou son parent)
+    const cell = el.closest('.mm-cell');
+    if (!cell) return null;
+    const r = parseInt(cell.dataset.r);
+    const c = parseInt(cell.dataset.c);
+    if (isNaN(r) || isNaN(c)) return null;
+    return { r, c };
+  }
+
+  function onPointerDown(e) {
+    e.preventDefault();
+    const pos = getCellFromPoint(e.clientX, e.clientY);
+    if (!pos) return;
+
+    state.selecting  = true;
+    state.selStart   = pos;
+    state.selCurrent = pos;
+    state.selCells   = [pos];
+    updateSelectionVisual();
+  }
+
+  function onPointerMove(e) {
+    if (!state.selecting) return;
+    e.preventDefault();
+    const pos = getCellFromPoint(e.clientX, e.clientY);
+    if (!pos) return;
+    if (pos.r === state.selCurrent.r && pos.c === state.selCurrent.c) return;
+    state.selCurrent = pos;
+    state.selCells   = computeSelCells();
+    updateSelectionVisual();
+  }
+
+  function onPointerUp(e) {
+    if (!state.selecting) return;
+    state.selecting = false;
+    validateSelection();
+    clearSelectionVisual();
+    state.selCells   = [];
+    state.selStart   = null;
+    state.selCurrent = null;
+  }
+
+  /* Calcule les cases sur la ligne entre start et current (8 directions) */
+  function computeSelCells() {
+    const { r: r0, c: c0 } = state.selStart;
+    const { r: r1, c: c1 } = state.selCurrent;
+    const dr = r1 - r0, dc = c1 - c0;
+    const len = Math.max(Math.abs(dr), Math.abs(dc));
+    if (len === 0) return [{ r: r0, c: c0 }];
+
+    // N'autoriser que les directions a 45° ou droites
+    const normDR = dr === 0 ? 0 : dr / Math.abs(dr);
+    const normDC = dc === 0 ? 0 : dc / Math.abs(dc);
+
+    // Verifier alignement (horizontal, vertical, diagonal)
+    if (Math.abs(dr) !== 0 && Math.abs(dc) !== 0 && Math.abs(dr) !== Math.abs(dc)) {
+      // Non aligne : on prend la direction dominante
+      if (Math.abs(dr) >= Math.abs(dc)) {
+        // vertical
+        return computeLine(r0, c0, normDR, 0, Math.abs(dr));
+      } else {
+        return computeLine(r0, c0, 0, normDC, Math.abs(dc));
+      }
+    }
+
+    return computeLine(r0, c0, normDR, normDC, len);
+  }
+
+  function computeLine(r0, c0, dr, dc, len) {
+    const cells = [];
+    for (let i = 0; i <= len; i++) {
+      cells.push({ r: r0 + dr * i, c: c0 + dc * i });
+    }
+    return cells;
+  }
+
+  function updateSelectionVisual() {
+    // Remettre toutes les cases a leur etat normal (sauf found)
+    const S = state.puzzle.size;
+    for (let r = 0; r < S; r++) {
+      for (let c = 0; c < S; c++) {
+        const el = document.getElementById(`mc-${r}-${c}`);
+        if (!el) continue;
+        // Verifier si cette case est "found"
+        const isFound = state.placed.some(p => p.found && p.cells.some(pos => pos.r === r && pos.c === c));
+        if (!isFound) {
+          el.className = 'mm-cell';
+        }
+      }
+    }
+    refreshFoundColors();
+
+    // Surligner la selection courante
+    state.selCells.forEach(pos => {
+      const el = document.getElementById(`mc-${pos.r}-${pos.c}`);
+      if (el && !el.classList.contains('found')) el.classList.add('selecting');
+    });
+  }
+
+  function clearSelectionVisual() {
+    state.selCells.forEach(pos => {
+      const el = document.getElementById(`mc-${pos.r}-${pos.c}`);
+      if (el) el.classList.remove('selecting');
+    });
+    refreshFoundColors();
+  }
+
+  /* =========================================================
+     VALIDATION DE LA SELECTION
+  ========================================================= */
+  function validateSelection() {
+    const selected = state.selCells.map(pos => state.grid[pos.r][pos.c]).join('');
+    const reversed = selected.split('').reverse().join('');
+
+    const match = state.placed.find(p => {
+      if (p.found) return false;
+      if (p.word !== selected && p.word !== reversed) return false;
+      // Verifier que les cellules selectionnees correspondent exactement
+      if (p.cells.length !== state.selCells.length) return false;
+      const fwd = p.cells.every((c, i) => c.r === state.selCells[i].r && c.c === state.selCells[i].c);
+      const bwd = p.cells.every((c, i) => {
+        const j = state.selCells.length - 1 - i;
+        return c.r === state.selCells[j].r && c.c === state.selCells[j].c;
+      });
+      return fwd || bwd;
+    });
+
+    if (match) {
+      match.found = true;
+      state.found++;
+      const xp = 3;
+      state.xp += xp;
+
+      refreshFoundColors();
+      updateWordTag(match);
+      updateKPIs();
+
+      recordExerciseProgress(PAGE_ID, { correct: 1, typed: 1, errors: 0, xp });
+      showFeedback('✅ ' + match.word + ' trouve ! +' + xp + ' XP', 'ok');
+      showToast('+' + xp + ' XP — ' + match.word, 'success');
+
+      if (state.found === state.placed.length) {
+        setTimeout(finishPuzzle, 700);
+      }
+    }
+  }
+
+  function updateWordTag(p) {
+    const tag = document.getElementById('wtag-' + p.word);
+    if (!tag) return;
+    tag.className = 'word-tag found';
+    tag.innerHTML = `<span class="check">✅</span>${p.word}`;
+    tag.style.borderColor = getColorHex(p.colorIdx);
+  }
+
+  function showFeedback(msg, type) {
+    const el = document.getElementById('mmFeedback');
+    el.textContent = msg;
+    el.className   = 'mm-feedback ' + type;
+    clearTimeout(el._t);
+    el._t = setTimeout(() => { el.textContent = ''; }, 2500);
+  }
+
+  /* =========================================================
+     INDICE — revele une cellule d'un mot non trouve
+  ========================================================= */
+  function giveHint() {
+    const unfound = state.placed.filter(p => !p.found);
+    if (!unfound.length) return;
+    const p    = unfound[Math.floor(Math.random() * unfound.length)];
+    const pos  = p.cells[0];
+    const el   = document.getElementById(`mc-${pos.r}-${pos.c}`);
+    if (el) {
+      el.style.boxShadow = '0 0 0 3px var(--warning)';
+      setTimeout(() => { el.style.boxShadow = ''; }, 2000);
+    }
+    showFeedback('💡 Cherche autour de la case surlignee…', 'ok');
+  }
+
+  /* Revele tous les mots restants */
+  function revealAll() {
+    state.placed.forEach(p => {
+      if (p.found) return;
+      p.found = true;
+      state.found++;
+      state.errors += 2;
+      updateWordTag(p);
+    });
+    refreshFoundColors();
+    updateKPIs();
+    setTimeout(finishPuzzle, 500);
+  }
+  window.revealAll = revealAll;
+
+  /* =========================================================
+     TIMER
+  ========================================================= */
+  function startTimer() {
+    const baseSec = sessionTimeSec;
+    state.startTime  = Date.now();
+    state.timerSec   = 0;
+    document.getElementById('kpiTimer').textContent = formatTime(baseSec);
+    clearInterval(state.timerHandle);
+    state.timerHandle = setInterval(() => {
+      state.timerSec = Math.floor((Date.now() - state.startTime) / 1000);
+      document.getElementById('kpiTimer').textContent = formatTime(baseSec + state.timerSec);
+    }, 1000);
+  }
+
+  function formatTime(s) {
+    return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
+  }
+
+  /* =========================================================
+     SELECTEUR DE GRILLE
+  ========================================================= */
+  function buildGridSelector() {
+    const container = document.getElementById('gridSelector');
+    container.innerHTML = '';
+    sessionPuzzles.forEach((p, i) => {
+      const btn = document.createElement('button');
+      btn.className   = 'grid-btn' + (i === 0 ? 'active' : '');
+      btn.textContent = p.name;
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.grid-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        loadPuzzle(i);
+      });
+      container.appendChild(btn);
+    });
+  }
+
+  /* =========================================================
+     INIT PUZZLE
+  ========================================================= */
+  function loadPuzzle(idx) {
+    clearInterval(state.timerHandle);
+
+    sessionIdx = idx;
+    const puzzle       = sessionPuzzles[idx];
+    state.puzzle       = puzzle;
+    const { grid, placed } = buildGrid(puzzle);
+    state.grid         = grid;
+    state.placed       = placed;
+    state.selecting    = false;
+    state.selStart     = null;
+    state.selCurrent   = null;
+    state.selCells     = [];
+    state.found        = 0;
+    state.xp           = 0;
+    state.errors       = 0;
+
+    document.getElementById('resultZone').classList.remove('show');
+    document.getElementById('gameZone').classList.remove('hidden');
+    document.getElementById('mmFeedback').textContent = '';
+    document.getElementById('mmSessionProgress').textContent = 'Progression ' + (idx + 1) + '/' + sessionPuzzles.length;
+    document.getElementById('mmCategory').textContent = formatThemeLabel(puzzle.theme);
+    const dirs = [...new Set(puzzle.words.map(word => word.dir))];
+    document.getElementById('mmDirections').textContent = 'Directions : ' + dirs.join(' · ');
+    updateProgressUI(idx, sessionPuzzles.length);
+
+    updateKPIs();
+
+    // Afficher les regles XP seulement a la premiere session (premier puzzle)
+    if (idx === 0 && !xpRulesShown) {
+      xpRulesShown = true;
+      showXPRules('Mots Meles');
+    }
+
+    renderGrid();
+    renderWordList();
+    startTimer();
+  }
+
+  /* =========================================================
+     FIN DE PUZZLE
+  ========================================================= */
+  function finishPuzzle() {
+    clearInterval(state.timerHandle);
+    sessionFound += state.found;
+    sessionXP += state.xp;
+    sessionErrors += state.errors;
+    sessionTimeSec += state.timerSec;
+
+    const isLast = sessionIdx >= sessionPuzzles.length - 1;
+    if (!isLast) {
+      loadPuzzle(sessionIdx + 1);
+      showToast('Grille suivante', 'info');
+      return;
+    }
+
+    endExerciseSession(PAGE_ID);
+    document.getElementById('gameZone').classList.add('hidden');
+    document.getElementById('resultZone').classList.add('show');
+
+    const accuracy = sessionErrors === 0 ? 100 : Math.round((sessionFound / (sessionFound + sessionErrors)) * 100);
+    document.getElementById('resFound').textContent    = sessionFound + ' / ' + sessionTotalWords;
+    document.getElementById('resTime').textContent     = formatTime(sessionTimeSec);
+    document.getElementById('resXP').textContent       = sessionXP;
+    document.getElementById('resAccuracy').textContent = accuracy + '%';
+    updateProgressUI(sessionPuzzles.length, sessionPuzzles.length);
+
+    if (sessionFound === sessionTotalWords && sessionErrors === 0) launchConfetti();
+  }
+
+  /* =========================================================
+     KPIs
+  ========================================================= */
+  function updateKPIs() {
+    document.getElementById('kpiFound').textContent = sessionFound + state.found;
+    document.getElementById('kpiTotal').textContent = sessionTotalWords;
+    document.getElementById('kpiXP').textContent    = sessionXP + state.xp;
+  }
+
+  function startSession() {
+    if (!Array.isArray(PUZZLES) || !PUZZLES.length) {
+      showToast('Aucune grille disponible dans les donnees.', 'error');
+      return;
+    }
+    startExerciseSession(PAGE_ID);
+    sessionPuzzles = window.ContentProfiles
+      ? window.ContentProfiles.buildSessionPool(PAGE_ID, PUZZLES, { level: 'A2' }).items
+      : PUZZLES.slice();
+    sessionIdx = 0;
+    sessionFound = 0;
+    sessionXP = 0;
+    sessionErrors = 0;
+    sessionTimeSec = 0;
+    sessionTotalWords = (sessionPuzzles || []).reduce((sum, p) => sum + ((p.words || []).length), 0);
+    document.getElementById('kpiTimer').textContent = formatTime(0);
+    updateProgressUI(0, sessionPuzzles.length);
+    loadPuzzle(0);
+  }
+
+  /* =========================================================
+     EVENTS
+  ========================================================= */
+  document.addEventListener('DOMContentLoaded', () => {
+    setupNextExerciseButton(PAGE_ID);
+        
+    document.getElementById('gridSelector').style.display = 'none';
+    startSession();
+
+    document.getElementById('btnHint').addEventListener('click', giveHint);
+    document.getElementById('btnReveal').addEventListener('click', revealAll);
+    document.getElementById('btnFinish').addEventListener('click', finishPuzzle);
+    document.getElementById('btnGenerate').addEventListener('click', generatePuzzle);
+    document.getElementById('btnRestart').addEventListener('click', () => {
+      startSession();
+      document.getElementById('resultZone').classList.remove('show');
+      document.getElementById('gameZone').classList.remove('hidden');
+    });
+  });
+  </script>
+</body>
+</html>

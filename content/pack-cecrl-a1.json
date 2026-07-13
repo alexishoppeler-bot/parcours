@@ -1,0 +1,2429 @@
+{
+  "meta": {
+    "id": "cecrl-a1",
+    "name": "CECRL A1",
+    "description": "Vie quotidienne en Suisse pour debuter : reperes simples, situations frequentes et vocabulaire tres courant.",
+    "generatedAt": "2026-07-12T19:56:51.490Z",
+    "derivedFrom": "pack-cecrl-base.json",
+    "focusThemes": [
+      "vie-quotidienne-suisse",
+      "logement",
+      "sante",
+      "transports",
+      "administration",
+      "courses"
+    ]
+  },
+  "profiles": {
+    "A1": {
+      "label": "A1",
+      "allowedDifficulties": [
+        "easy"
+      ],
+      "sessionLengths": {
+        "jeu-alphabet": 4,
+        "jeu-anagramme": 6,
+        "jeu-apparier": 3,
+        "jeu-cherche-clique": 5,
+        "jeu-classement": 4,
+        "jeu-demeler": 4,
+        "jeu-mots-croises": 2,
+        "jeu-mots-meles": 2,
+        "jeu-paire": 6,
+        "jeu-pendu": 6,
+        "jeu-quiz": 5,
+        "jeu-vrai-faux": 5
+      }
+    },
+    "A2": {
+      "label": "A2",
+      "allowedDifficulties": [
+        "easy",
+        "medium"
+      ],
+      "sessionLengths": {
+        "jeu-alphabet": 5,
+        "jeu-anagramme": 8,
+        "jeu-apparier": 4,
+        "jeu-cherche-clique": 6,
+        "jeu-classement": 5,
+        "jeu-demeler": 6,
+        "jeu-mots-croises": 3,
+        "jeu-mots-meles": 3,
+        "jeu-paire": 8,
+        "jeu-pendu": 8,
+        "jeu-quiz": 6,
+        "jeu-vrai-faux": 6
+      }
+    },
+    "B1": {
+      "label": "B1",
+      "allowedDifficulties": [
+        "medium",
+        "hard"
+      ],
+      "sessionLengths": {
+        "jeu-alphabet": 6,
+        "jeu-anagramme": 10,
+        "jeu-apparier": 5,
+        "jeu-cherche-clique": 8,
+        "jeu-classement": 6,
+        "jeu-demeler": 8,
+        "jeu-mots-croises": 4,
+        "jeu-mots-meles": 4,
+        "jeu-paire": 10,
+        "jeu-pendu": 10,
+        "jeu-quiz": 8,
+        "jeu-vrai-faux": 8
+      }
+    },
+    "DEFAULT": {
+      "label": "A1",
+      "allowedDifficulties": [
+        "easy"
+      ],
+      "sessionLengths": {
+        "jeu-alphabet": 4,
+        "jeu-anagramme": 6,
+        "jeu-apparier": 3,
+        "jeu-cherche-clique": 5,
+        "jeu-classement": 4,
+        "jeu-demeler": 4,
+        "jeu-mots-croises": 2,
+        "jeu-mots-meles": 2,
+        "jeu-paire": 6,
+        "jeu-pendu": 6,
+        "jeu-quiz": 5,
+        "jeu-vrai-faux": 5
+      }
+    }
+  },
+  "exercises": [
+    {
+      "page": "jeu-alphabet",
+      "name": "Alphabet",
+      "icon": "A",
+      "level": "A1",
+      "summary": "Classe des mots tres frequents de la vie quotidienne en Suisse.",
+      "xpRule": "+5 XP par bonne reponse."
+    },
+    {
+      "page": "jeu-pendu",
+      "name": "Pendu",
+      "icon": "P",
+      "level": "A1",
+      "summary": "Trouve des mots simples utiles pour la vie quotidienne en Suisse.",
+      "xpRule": "+5 XP sans indice, +3 XP avec indice."
+    },
+    {
+      "page": "jeu-mots-meles",
+      "name": "Mots meles",
+      "icon": "W",
+      "level": "A1-A2",
+      "summary": "Repere du vocabulaire simple de la vie quotidienne en Suisse.",
+      "xpRule": "+3 XP par mot trouve."
+    },
+    {
+      "page": "jeu-anagramme",
+      "name": "Anagramme",
+      "icon": "AN",
+      "level": "A1-A2",
+      "summary": "Remets en ordre des mots simples du quotidien.",
+      "xpRule": "+3 XP sans indice, +1 XP avec indice."
+    },
+    {
+      "page": "jeu-apparier",
+      "name": "Apparier",
+      "icon": "=",
+      "level": "A1-A2",
+      "summary": "Relie des mots simples a leur sens ou a leur situation.",
+      "xpRule": "+2 XP par paire trouvee."
+    },
+    {
+      "page": "jeu-paire",
+      "name": "Paires",
+      "icon": "2",
+      "level": "A1",
+      "summary": "Memorise des cartes tres simples du quotidien.",
+      "xpRule": "+2 XP par paire memorisee."
+    },
+    {
+      "page": "jeu-demeler",
+      "name": "Demeler",
+      "icon": "S",
+      "level": "A1-A2",
+      "summary": "Reconstruis des phrases courtes de la vie quotidienne.",
+      "xpRule": "+5 XP sans indice, +3 XP avec indice."
+    },
+    {
+      "page": "jeu-cherche-clique",
+      "name": "Cherche & clique",
+      "icon": "+",
+      "level": "A1",
+      "summary": "Observe et retrouve les elements essentiels d une situation simple.",
+      "xpRule": "+3 XP par clic correct."
+    },
+    {
+      "page": "jeu-vrai-faux",
+      "name": "Vrai / Faux",
+      "icon": "VF",
+      "level": "A1-A2",
+      "summary": "Lis une phrase simple sur la vie quotidienne en Suisse et choisis vrai ou faux.",
+      "xpRule": "+2 XP par bonne reponse + bonus de serie."
+    },
+    {
+      "page": "jeu-quiz",
+      "name": "Quiz",
+      "icon": "Q",
+      "level": "A1-A2",
+      "summary": "Reponds a des questions simples sur la vie quotidienne en Suisse.",
+      "xpRule": "+3 XP par bonne reponse + bonus de serie."
+    },
+    {
+      "page": "jeu-classement",
+      "name": "Classement",
+      "icon": "#",
+      "level": "A1-A2",
+      "summary": "Remets dans l ordre des actions tres concretes du quotidien.",
+      "xpRule": "+5 XP par classement parfait."
+    },
+    {
+      "page": "jeu-mots-croises",
+      "name": "Mots croises",
+      "icon": "X",
+      "level": "A1-A2",
+      "summary": "Retrouve quelques mots simples avec des indices courts.",
+      "xpRule": "+5 XP par mot trouve."
+    }
+  ],
+  "datasets": {
+    "ALPHABET_DATA": [
+      {
+        "source": "core",
+        "words": [
+          "Adresse",
+          "Date",
+          "Document",
+          "Email",
+          "Nom",
+          "Pays",
+          "Prenom",
+          "Signature"
+        ],
+        "difficulty": "easy",
+        "theme": "administration"
+      },
+      {
+        "source": "core",
+        "words": [
+          "Arret",
+          "Billet",
+          "Bus",
+          "Gare",
+          "Horaire",
+          "Quai",
+          "Train",
+          "Tram"
+        ],
+        "difficulty": "easy",
+        "theme": "transports"
+      },
+      {
+        "source": "core",
+        "words": [
+          "Assure",
+          "Cabinet",
+          "Hopital",
+          "Medecin",
+          "Pharmacie",
+          "Sante",
+          "Soin",
+          "Vaccin"
+        ],
+        "difficulty": "easy",
+        "theme": "sante"
+      },
+      {
+        "source": "core",
+        "words": [
+          "Bail",
+          "Balcon",
+          "Cave",
+          "Cle",
+          "Loyer",
+          "Maison",
+          "Porte",
+          "Salon"
+        ],
+        "difficulty": "easy",
+        "theme": "logement"
+      },
+      {
+        "source": "core",
+        "words": [
+          "Caisse",
+          "Carte",
+          "Fruit",
+          "Lait",
+          "Pain",
+          "Panier",
+          "Prix",
+          "Ticket"
+        ],
+        "difficulty": "easy",
+        "theme": "courses"
+      },
+      {
+        "source": "core",
+        "words": [
+          "Appel",
+          "Date",
+          "Heure",
+          "Jour",
+          "Message",
+          "Note",
+          "Rappel",
+          "Retard"
+        ],
+        "difficulty": "easy",
+        "theme": "rendez-vous"
+      }
+    ],
+    "ANAGRAMME_DATA": [
+      {
+        "word": "NOM",
+        "hint": "Nom de famille",
+        "category": "Identité",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne"
+      },
+      {
+        "word": "DATE",
+        "hint": "Jour, mois et année",
+        "category": "Document",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne"
+      },
+      {
+        "word": "RUE",
+        "hint": "Nom de la voie dans une adresse",
+        "category": "Adresse",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne"
+      },
+      {
+        "word": "VILLE",
+        "hint": "Commune où vous habitez",
+        "category": "Adresse",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne"
+      },
+      {
+        "word": "PAYS",
+        "hint": "Exemple : Suisse, France, Italie",
+        "category": "Adresse",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne"
+      },
+      {
+        "word": "EMAIL",
+        "hint": "Adresse électronique",
+        "category": "Contact",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne"
+      },
+      {
+        "word": "NPA",
+        "hint": "Code postal en Suisse",
+        "category": "Adresse",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne"
+      },
+      {
+        "word": "PHOTO",
+        "hint": "Image demandée pour un document",
+        "category": "Document",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne"
+      },
+      {
+        "word": "GARE",
+        "hint": "Lieu où on prend le train",
+        "category": "Transports",
+        "difficulty": "easy",
+        "theme": "transports"
+      },
+      {
+        "word": "BILLET",
+        "hint": "Titre pour voyager",
+        "category": "Transports",
+        "difficulty": "easy",
+        "theme": "transports"
+      },
+      {
+        "word": "SANTE",
+        "hint": "Bien-être physique et mental",
+        "category": "Santé",
+        "difficulty": "easy",
+        "theme": "sante"
+      },
+      {
+        "word": "LOYER",
+        "hint": "Somme payée chaque mois pour habiter",
+        "category": "Logement",
+        "difficulty": "easy",
+        "theme": "logement"
+      },
+      {
+        "word": "BAIL",
+        "hint": "Contrat de location",
+        "category": "Logement",
+        "difficulty": "easy",
+        "theme": "logement"
+      },
+      {
+        "word": "BANQUE",
+        "hint": "Établissement financier",
+        "category": "Banque",
+        "difficulty": "easy",
+        "theme": "banque"
+      },
+      {
+        "word": "COMPTE",
+        "hint": "Service ouvert à la banque pour son argent",
+        "category": "Banque",
+        "difficulty": "easy",
+        "theme": "banque"
+      },
+      {
+        "word": "PAIN",
+        "hint": "Aliment tres courant du petit-dejeuner",
+        "category": "Courses",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne"
+      },
+      {
+        "word": "LAIT",
+        "hint": "Boisson blanche souvent au frigo",
+        "category": "Courses",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne"
+      },
+      {
+        "word": "PRIX",
+        "hint": "Somme demandee pour un produit",
+        "category": "Courses",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne"
+      },
+      {
+        "word": "HEURE",
+        "hint": "Moment precis dans la journee",
+        "category": "Rendez-vous",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne"
+      },
+      {
+        "word": "DATE",
+        "hint": "Jour fixe pour un rendez-vous",
+        "category": "Rendez-vous",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne"
+      },
+      {
+        "word": "BAIN",
+        "hint": "Piece ou l on se lave",
+        "category": "Logement",
+        "difficulty": "easy",
+        "theme": "logement"
+      },
+      {
+        "word": "CLE",
+        "hint": "Objet pour ouvrir la porte",
+        "category": "Logement",
+        "difficulty": "easy",
+        "theme": "logement"
+      },
+      {
+        "word": "SOIN",
+        "hint": "Aide ou traitement medical",
+        "category": "Sante",
+        "difficulty": "easy",
+        "theme": "sante"
+      }
+    ],
+    "APPARIER_DATA": [
+      {
+        "category": "Administration",
+        "difficulty": "easy",
+        "theme": "commune",
+        "pairs": [
+          {
+            "term": "Guichet",
+            "def": "Lieu où l’on parle avec un service"
+          },
+          {
+            "term": "Formulaire",
+            "def": "Document à remplir pour une demande"
+          },
+          {
+            "term": "Signature",
+            "def": "Nom écrit pour valider un document"
+          },
+          {
+            "term": "Attestation",
+            "def": "Document officiel qui confirme une information"
+          },
+          {
+            "term": "Horaire",
+            "def": "Heure d’ouverture d’un service"
+          }
+        ]
+      },
+      {
+        "category": "Transports",
+        "difficulty": "easy",
+        "theme": "transports",
+        "pairs": [
+          {
+            "term": "Billet",
+            "def": "Titre nécessaire pour voyager"
+          },
+          {
+            "term": "Quai",
+            "def": "Endroit où l’on attend le train"
+          },
+          {
+            "term": "Arrêt",
+            "def": "Endroit où le bus s’arrête"
+          },
+          {
+            "term": "Correspondance",
+            "def": "Changement entre deux transports"
+          },
+          {
+            "term": "Retard",
+            "def": "Arrivée après l’heure prévue"
+          }
+        ]
+      },
+      {
+        "category": "Santé",
+        "difficulty": "easy",
+        "theme": "sante",
+        "pairs": [
+          {
+            "term": "Ordonnance",
+            "def": "Document du médecin pour un médicament"
+          },
+          {
+            "term": "Pharmacie",
+            "def": "Lieu où l’on achète les médicaments"
+          },
+          {
+            "term": "Carte d’assuré",
+            "def": "Carte utile lors d’une consultation"
+          },
+          {
+            "term": "Urgences",
+            "def": "Service pour les situations graves"
+          },
+          {
+            "term": "Rendez-vous",
+            "def": "Moment fixé avec un professionnel"
+          }
+        ]
+      },
+      {
+        "category": "Courses",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne",
+        "pairs": [
+          {
+            "term": "Panier",
+            "def": "Objet pour porter les achats dans le magasin"
+          },
+          {
+            "term": "Caisse",
+            "def": "Endroit ou l on paie les produits"
+          },
+          {
+            "term": "Prix",
+            "def": "Somme demandee pour acheter un produit"
+          },
+          {
+            "term": "Ticket",
+            "def": "Papier donne apres le paiement"
+          },
+          {
+            "term": "Promotion",
+            "def": "Reduction temporaire sur un produit"
+          }
+        ]
+      }
+    ],
+    "CHERCHE_CLIQUE_DATA": [
+      {
+        "id": "user",
+        "icon": "👤",
+        "label": "Nom / Profil",
+        "category": "Identité",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne"
+      },
+      {
+        "id": "idcard",
+        "icon": "🪪",
+        "label": "Pièce d'identité",
+        "category": "Identité",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne"
+      },
+      {
+        "id": "calendar",
+        "icon": "📅",
+        "label": "Date de naissance",
+        "category": "Identité",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne"
+      },
+      {
+        "id": "home",
+        "icon": "🏠",
+        "label": "Adresse",
+        "category": "Coordonnées",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne"
+      },
+      {
+        "id": "phone",
+        "icon": "📞",
+        "label": "Téléphone",
+        "category": "Coordonnées",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne"
+      },
+      {
+        "id": "mail",
+        "icon": "✉️",
+        "label": "E-mail",
+        "category": "Coordonnées",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne"
+      },
+      {
+        "id": "document",
+        "icon": "📄",
+        "label": "Formulaire",
+        "category": "Documents",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne"
+      },
+      {
+        "id": "check",
+        "icon": "☑️",
+        "label": "Case à cocher",
+        "category": "Documents",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne"
+      },
+      {
+        "id": "pen",
+        "icon": "✏️",
+        "label": "Signature",
+        "category": "Documents",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne"
+      },
+      {
+        "id": "search",
+        "icon": "🔎",
+        "label": "Rechercher",
+        "category": "Actions",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne"
+      },
+      {
+        "id": "save",
+        "icon": "💾",
+        "label": "Enregistrer",
+        "category": "Actions",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne"
+      },
+      {
+        "id": "send",
+        "icon": "📤",
+        "label": "Envoyer",
+        "category": "Actions",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne"
+      },
+      {
+        "id": "bus",
+        "icon": "🚌",
+        "label": "Bus",
+        "category": "Transports",
+        "difficulty": "easy",
+        "theme": "transports"
+      },
+      {
+        "id": "train",
+        "icon": "🚆",
+        "label": "Train",
+        "category": "Transports",
+        "difficulty": "easy",
+        "theme": "transports"
+      },
+      {
+        "id": "ticket",
+        "icon": "🎫",
+        "label": "Billet",
+        "category": "Transports",
+        "difficulty": "easy",
+        "theme": "transports"
+      },
+      {
+        "id": "clock",
+        "icon": "🕒",
+        "label": "Horaire",
+        "category": "Transports",
+        "difficulty": "easy",
+        "theme": "transports"
+      },
+      {
+        "id": "doctor",
+        "icon": "🩺",
+        "label": "Médecin",
+        "category": "Santé",
+        "difficulty": "easy",
+        "theme": "sante"
+      },
+      {
+        "id": "pill",
+        "icon": "💊",
+        "label": "Médicament",
+        "category": "Santé",
+        "difficulty": "easy",
+        "theme": "sante"
+      },
+      {
+        "id": "key",
+        "icon": "🔑",
+        "label": "Clé",
+        "category": "Logement",
+        "difficulty": "easy",
+        "theme": "logement"
+      },
+      {
+        "id": "rent",
+        "icon": "💸",
+        "label": "Loyer",
+        "category": "Logement",
+        "difficulty": "easy",
+        "theme": "logement"
+      },
+      {
+        "id": "bank",
+        "icon": "🏦",
+        "label": "Banque",
+        "category": "Banque",
+        "difficulty": "easy",
+        "theme": "banque"
+      },
+      {
+        "id": "invoice",
+        "icon": "🧾",
+        "label": "Facture",
+        "category": "Banque",
+        "difficulty": "easy",
+        "theme": "banque"
+      },
+      {
+        "id": "card",
+        "icon": "💳",
+        "label": "Carte bancaire",
+        "category": "Banque",
+        "difficulty": "easy",
+        "theme": "banque"
+      },
+      {
+        "id": "briefcase",
+        "icon": "💼",
+        "label": "Travail",
+        "category": "Travail",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne"
+      },
+      {
+        "id": "company",
+        "icon": "🏢",
+        "label": "Entreprise",
+        "category": "Travail",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne"
+      },
+      {
+        "id": "basket",
+        "icon": "🧺",
+        "label": "Panier",
+        "category": "Courses",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne"
+      },
+      {
+        "id": "cashier",
+        "icon": "💰",
+        "label": "Caisse",
+        "category": "Courses",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne"
+      },
+      {
+        "id": "price",
+        "icon": "🏷️",
+        "label": "Prix",
+        "category": "Courses",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne"
+      },
+      {
+        "id": "appointment",
+        "icon": "📅",
+        "label": "Rendez-vous",
+        "category": "Rendez-vous",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne"
+      },
+      {
+        "id": "alarm",
+        "icon": "⏰",
+        "label": "Heure",
+        "category": "Rendez-vous",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne"
+      },
+      {
+        "id": "post",
+        "icon": "📮",
+        "label": "Poste",
+        "category": "Poste",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne"
+      },
+      {
+        "id": "letter",
+        "icon": "✉️",
+        "label": "Lettre",
+        "category": "Poste",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne"
+      }
+    ],
+    "CLASSEMENT_DATA": [
+      {
+        "category": "Le matin",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne",
+        "question": "Se préparer le matin",
+        "label": "Dans l'ordre logique",
+        "items": [
+          "Se réveiller",
+          "Se laver",
+          "S'habiller",
+          "Prendre le petit-déjeuner",
+          "Quitter la maison"
+        ]
+      },
+      {
+        "category": "E-mail",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne",
+        "question": "Envoyer un e-mail simple",
+        "label": "Dans l'ordre logique",
+        "items": [
+          "Ouvrir la messagerie",
+          "Écrire l'adresse e-mail",
+          "Écrire le message",
+          "Relire",
+          "Cliquer sur envoyer"
+        ]
+      },
+      {
+        "category": "Bus",
+        "difficulty": "easy",
+        "theme": "transports",
+        "question": "Prendre le bus",
+        "label": "Dans l'ordre logique",
+        "items": [
+          "Regarder l'horaire",
+          "Aller à l'arrêt",
+          "Attendre le bus",
+          "Monter dans le bus",
+          "Descendre au bon arrêt"
+        ]
+      },
+      {
+        "category": "Courses",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne",
+        "question": "Faire des courses",
+        "label": "Dans l'ordre logique",
+        "items": [
+          "Prendre un panier",
+          "Choisir les produits",
+          "Aller à la caisse",
+          "Payer",
+          "Ranger les courses"
+        ]
+      },
+      {
+        "category": "Courses",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne",
+        "question": "Faire des courses simples",
+        "label": "Dans l ordre logique",
+        "items": [
+          "Prendre un panier",
+          "Choisir les produits",
+          "Aller a la caisse",
+          "Payer",
+          "Ranger les achats"
+        ]
+      },
+      {
+        "category": "Rendez-vous",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne",
+        "question": "Aller a un rendez-vous",
+        "label": "Dans l ordre logique",
+        "items": [
+          "Regarder la date",
+          "Verifier l heure",
+          "Preparer les documents",
+          "Partir a temps",
+          "Arriver au rendez-vous"
+        ]
+      }
+    ],
+    "DEMELER_DATA": [
+      {
+        "cat": "Formulaire",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne",
+        "text": "Je lis le formulaire avant d’écrire."
+      },
+      {
+        "cat": "Formulaire",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne",
+        "text": "Je remplis les cases avec mes informations."
+      },
+      {
+        "cat": "Identité",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne",
+        "text": "J’écris mon nom et mon prénom."
+      },
+      {
+        "cat": "Adresse",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne",
+        "text": "J’écris ma rue, mon numéro et ma ville."
+      },
+      {
+        "cat": "Contact",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne",
+        "text": "Je donne mon numéro de téléphone et mon e-mail."
+      },
+      {
+        "cat": "Vérification",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne",
+        "text": "Je relis mes réponses avant de signer."
+      },
+      {
+        "cat": "Transports",
+        "difficulty": "easy",
+        "theme": "transports",
+        "text": "Je regarde l’horaire avant de prendre le train."
+      },
+      {
+        "cat": "Transports",
+        "difficulty": "easy",
+        "theme": "transports",
+        "text": "J’achète mon billet avant de monter dans le bus."
+      },
+      {
+        "cat": "Santé",
+        "difficulty": "easy",
+        "theme": "sante",
+        "text": "Je prends rendez-vous chez le médecin."
+      },
+      {
+        "cat": "Logement",
+        "difficulty": "easy",
+        "theme": "logement",
+        "text": "Je paie mon loyer chaque mois."
+      },
+      {
+        "cat": "Banque",
+        "difficulty": "easy",
+        "theme": "banque",
+        "text": "Je vérifie le montant avant de payer la facture."
+      },
+      {
+        "cat": "Courses",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne",
+        "text": "Je prends un panier avant de faire mes courses."
+      },
+      {
+        "cat": "Courses",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne",
+        "text": "Je regarde le prix avant de payer."
+      },
+      {
+        "cat": "Rendez-vous",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne",
+        "text": "Je note la date de mon rendez-vous."
+      },
+      {
+        "cat": "Rendez-vous",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne",
+        "text": "Je pars en avance pour arriver a l heure."
+      },
+      {
+        "cat": "Poste",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne",
+        "text": "Je vais a la poste pour envoyer une lettre."
+      },
+      {
+        "cat": "Pharmacie",
+        "difficulty": "easy",
+        "theme": "sante",
+        "text": "Je vais a la pharmacie acheter mes medicaments."
+      },
+      {
+        "cat": "Commune",
+        "difficulty": "easy",
+        "theme": "commune",
+        "text": "Je vais a la commune avec mes documents."
+      }
+    ],
+    "MOTS_CROISES_DATA": [
+      {
+        "name": "Grille 1 - Formulaire",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne",
+        "rows": 7,
+        "cols": 8,
+        "layout": [
+          "DOSSIER#",
+          "A#I#N###",
+          "T#G#F###",
+          "E#N#O###",
+          "##E#####",
+          "###EMAIL",
+          "NOM#####"
+        ],
+        "words": [
+          {
+            "id": 1,
+            "dir": "across",
+            "r": 0,
+            "c": 0,
+            "answer": "DOSSIER",
+            "clue": "Ensemble de documents à remettre"
+          },
+          {
+            "id": 2,
+            "dir": "across",
+            "r": 5,
+            "c": 3,
+            "answer": "EMAIL",
+            "clue": "Adresse électronique de contact"
+          },
+          {
+            "id": 3,
+            "dir": "across",
+            "r": 6,
+            "c": 0,
+            "answer": "NOM",
+            "clue": "Nom de famille"
+          },
+          {
+            "id": 4,
+            "dir": "down",
+            "r": 0,
+            "c": 0,
+            "answer": "DATE",
+            "clue": "Jour, mois et année"
+          },
+          {
+            "id": 5,
+            "dir": "down",
+            "r": 0,
+            "c": 2,
+            "answer": "SIGNE",
+            "clue": "Action pour valider un document"
+          },
+          {
+            "id": 6,
+            "dir": "down",
+            "r": 0,
+            "c": 4,
+            "answer": "INFO",
+            "clue": "Renseignement demandé dans un champ"
+          }
+        ]
+      },
+      {
+        "name": "Grille 2 - Transports",
+        "difficulty": "easy",
+        "theme": "transports",
+        "rows": 7,
+        "cols": 8,
+        "layout": [
+          "TRAM####",
+          "R#R#####",
+          "A#R#####",
+          "I#E#####",
+          "N#T#####",
+          "#####BUS",
+          "GARE####"
+        ],
+        "words": [
+          {
+            "id": 1,
+            "dir": "across",
+            "r": 0,
+            "c": 0,
+            "answer": "TRAM",
+            "clue": "Transport public en ville"
+          },
+          {
+            "id": 2,
+            "dir": "across",
+            "r": 5,
+            "c": 5,
+            "answer": "BUS",
+            "clue": "Transport public sur la route"
+          },
+          {
+            "id": 3,
+            "dir": "across",
+            "r": 6,
+            "c": 0,
+            "answer": "GARE",
+            "clue": "Lieu où l’on prend le train"
+          },
+          {
+            "id": 4,
+            "dir": "down",
+            "r": 0,
+            "c": 0,
+            "answer": "TRAIN",
+            "clue": "Transport qui circule sur les rails"
+          },
+          {
+            "id": 5,
+            "dir": "down",
+            "r": 0,
+            "c": 2,
+            "answer": "ARRET",
+            "clue": "Endroit où l’on attend le bus ou le tram"
+          }
+        ]
+      },
+      {
+        "name": "Grille 3 - Santé",
+        "difficulty": "medium",
+        "theme": "sante",
+        "rows": 8,
+        "cols": 8,
+        "layout": [
+          "#S######",
+          "#A##VH##",
+          "#N##AO##",
+          "#T##CP##",
+          "MEDECIN#",
+          "####IT##",
+          "#SOINA##",
+          "#####L##"
+        ],
+        "words": [
+          {
+            "id": 1,
+            "dir": "across",
+            "r": 4,
+            "c": 0,
+            "answer": "MEDECIN",
+            "clue": "Professionnel de la santé"
+          },
+          {
+            "id": 2,
+            "dir": "across",
+            "r": 6,
+            "c": 1,
+            "answer": "SOIN",
+            "clue": "Aide ou traitement médical"
+          },
+          {
+            "id": 3,
+            "dir": "down",
+            "r": 0,
+            "c": 1,
+            "answer": "SANTE",
+            "clue": "Bien-être physique et mental"
+          },
+          {
+            "id": 4,
+            "dir": "down",
+            "r": 1,
+            "c": 4,
+            "answer": "VACCIN",
+            "clue": "Protection contre certaines maladies"
+          },
+          {
+            "id": 5,
+            "dir": "down",
+            "r": 1,
+            "c": 5,
+            "answer": "HOPITAL",
+            "clue": "Grand établissement de soins"
+          }
+        ]
+      },
+      {
+        "name": "Grille 4 - Logement",
+        "difficulty": "medium",
+        "theme": "logement",
+        "rows": 7,
+        "cols": 8,
+        "layout": [
+          "###L####",
+          "###O####",
+          "###Y####",
+          "###EB###",
+          "#GERANCE",
+          "CAUTION#",
+          "####L###"
+        ],
+        "words": [
+          {
+            "id": 1,
+            "dir": "across",
+            "r": 4,
+            "c": 1,
+            "answer": "GERANCE",
+            "clue": "Société qui gère les immeubles en location"
+          },
+          {
+            "id": 2,
+            "dir": "across",
+            "r": 5,
+            "c": 0,
+            "answer": "CAUTION",
+            "clue": "Garantie versée avant d’entrer dans le logement"
+          },
+          {
+            "id": 3,
+            "dir": "down",
+            "r": 0,
+            "c": 3,
+            "answer": "LOYER",
+            "clue": "Somme mensuelle payée pour habiter"
+          },
+          {
+            "id": 4,
+            "dir": "down",
+            "r": 3,
+            "c": 4,
+            "answer": "BAIL",
+            "clue": "Contrat de location signé"
+          }
+        ]
+      },
+      {
+        "name": "Grille 5 - Courses",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne",
+        "rows": 7,
+        "cols": 8,
+        "layout": [
+          "PAIN####",
+          "R#A#####",
+          "I#I#####",
+          "X#T#####",
+          "###PANIER",
+          "CAISSE##",
+          "TICKET##"
+        ],
+        "words": [
+          {
+            "id": 1,
+            "dir": "across",
+            "r": 0,
+            "c": 0,
+            "answer": "PAIN",
+            "clue": "Aliment tres courant du quotidien"
+          },
+          {
+            "id": 2,
+            "dir": "across",
+            "r": 4,
+            "c": 3,
+            "answer": "PANIER",
+            "clue": "Objet pour porter les achats"
+          },
+          {
+            "id": 3,
+            "dir": "across",
+            "r": 5,
+            "c": 0,
+            "answer": "CAISSE",
+            "clue": "Endroit ou l on paie"
+          },
+          {
+            "id": 4,
+            "dir": "across",
+            "r": 6,
+            "c": 0,
+            "answer": "TICKET",
+            "clue": "Papier donne apres le paiement"
+          },
+          {
+            "id": 5,
+            "dir": "down",
+            "r": 0,
+            "c": 0,
+            "answer": "PRIX",
+            "clue": "Somme demandee pour acheter"
+          },
+          {
+            "id": 6,
+            "dir": "down",
+            "r": 0,
+            "c": 2,
+            "answer": "LAIT",
+            "clue": "Boisson blanche du frigo"
+          }
+        ]
+      },
+      {
+        "name": "Grille 6 - Rendez-vous",
+        "difficulty": "medium",
+        "theme": "vie-quotidienne",
+        "rows": 8,
+        "cols": 8,
+        "layout": [
+          "DATE####",
+          "E#P#####",
+          "U#P#####",
+          "R#E#####",
+          "E#L#####",
+          "###HEURE",
+          "ANNULER#",
+          "RAPPEL##"
+        ],
+        "words": [
+          {
+            "id": 1,
+            "dir": "across",
+            "r": 0,
+            "c": 0,
+            "answer": "DATE",
+            "clue": "Jour fixe pour venir"
+          },
+          {
+            "id": 2,
+            "dir": "across",
+            "r": 5,
+            "c": 3,
+            "answer": "HEURE",
+            "clue": "Moment precis de la journee"
+          },
+          {
+            "id": 3,
+            "dir": "across",
+            "r": 6,
+            "c": 0,
+            "answer": "ANNULER",
+            "clue": "Dire que l on ne vient pas"
+          },
+          {
+            "id": 4,
+            "dir": "across",
+            "r": 7,
+            "c": 0,
+            "answer": "RAPPEL",
+            "clue": "Message pour ne pas oublier"
+          },
+          {
+            "id": 5,
+            "dir": "down",
+            "r": 0,
+            "c": 0,
+            "answer": "RETARD",
+            "clue": "Arrivee apres l heure prevue"
+          },
+          {
+            "id": 6,
+            "dir": "down",
+            "r": 1,
+            "c": 2,
+            "answer": "APPEL",
+            "clue": "Action de telephoner"
+          }
+        ]
+      },
+      {
+        "name": "Grille 8 - Poste",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne",
+        "rows": 7,
+        "cols": 8,
+        "layout": [
+          "POSTE###",
+          "########",
+          "########",
+          "########",
+          "########",
+          "COLIS###",
+          "LETTRE##"
+        ],
+        "words": [
+          {
+            "id": 1,
+            "dir": "across",
+            "r": 0,
+            "c": 0,
+            "answer": "POSTE",
+            "clue": "Service pour lettres et colis"
+          },
+          {
+            "id": 2,
+            "dir": "across",
+            "r": 5,
+            "c": 0,
+            "answer": "COLIS",
+            "clue": "Paquet a envoyer ou recevoir"
+          },
+          {
+            "id": 3,
+            "dir": "across",
+            "r": 6,
+            "c": 0,
+            "answer": "LETTRE",
+            "clue": "Courrier papier dans une enveloppe"
+          }
+        ]
+      }
+    ],
+    "MOTS_MELES_DATA": [
+      {
+        "name": "Formulaire",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne",
+        "size": 12,
+        "words": [
+          {
+            "word": "NOM",
+            "r": 0,
+            "c": 0,
+            "dir": "H"
+          },
+          {
+            "word": "PRENOM",
+            "r": 1,
+            "c": 0,
+            "dir": "H"
+          },
+          {
+            "word": "ADRESSE",
+            "r": 2,
+            "c": 0,
+            "dir": "H"
+          },
+          {
+            "word": "VILLE",
+            "r": 3,
+            "c": 0,
+            "dir": "H"
+          },
+          {
+            "word": "PAYS",
+            "r": 4,
+            "c": 0,
+            "dir": "H"
+          },
+          {
+            "word": "EMAIL",
+            "r": 5,
+            "c": 0,
+            "dir": "H"
+          },
+          {
+            "word": "DATE",
+            "r": 6,
+            "c": 0,
+            "dir": "H"
+          },
+          {
+            "word": "SIGNATURE",
+            "r": 7,
+            "c": 0,
+            "dir": "H"
+          },
+          {
+            "word": "DOSSIER",
+            "r": 8,
+            "c": 0,
+            "dir": "H"
+          },
+          {
+            "word": "PERMIS",
+            "r": 9,
+            "c": 0,
+            "dir": "H"
+          }
+        ]
+      },
+      {
+        "name": "Transports",
+        "difficulty": "easy",
+        "theme": "transports",
+        "size": 12,
+        "words": [
+          {
+            "word": "BUS",
+            "r": 0,
+            "c": 0,
+            "dir": "H"
+          },
+          {
+            "word": "TRAIN",
+            "r": 1,
+            "c": 0,
+            "dir": "H"
+          },
+          {
+            "word": "TRAM",
+            "r": 2,
+            "c": 0,
+            "dir": "H"
+          },
+          {
+            "word": "GARE",
+            "r": 3,
+            "c": 0,
+            "dir": "H"
+          },
+          {
+            "word": "QUAI",
+            "r": 4,
+            "c": 0,
+            "dir": "H"
+          },
+          {
+            "word": "BILLET",
+            "r": 5,
+            "c": 0,
+            "dir": "H"
+          },
+          {
+            "word": "ARRET",
+            "r": 6,
+            "c": 0,
+            "dir": "H"
+          },
+          {
+            "word": "HORAIRE",
+            "r": 7,
+            "c": 0,
+            "dir": "H"
+          },
+          {
+            "word": "RETARD",
+            "r": 8,
+            "c": 0,
+            "dir": "H"
+          },
+          {
+            "word": "VOYAGE",
+            "r": 9,
+            "c": 0,
+            "dir": "H"
+          }
+        ]
+      },
+      {
+        "name": "Courses",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne",
+        "size": 12,
+        "words": [
+          {
+            "word": "PAIN",
+            "r": 0,
+            "c": 0,
+            "dir": "H"
+          },
+          {
+            "word": "LAIT",
+            "r": 1,
+            "c": 0,
+            "dir": "H"
+          },
+          {
+            "word": "PRIX",
+            "r": 2,
+            "c": 0,
+            "dir": "H"
+          },
+          {
+            "word": "PANIER",
+            "r": 3,
+            "c": 0,
+            "dir": "H"
+          },
+          {
+            "word": "CAISSE",
+            "r": 4,
+            "c": 0,
+            "dir": "H"
+          },
+          {
+            "word": "TICKET",
+            "r": 5,
+            "c": 0,
+            "dir": "H"
+          },
+          {
+            "word": "CARTE",
+            "r": 6,
+            "c": 0,
+            "dir": "H"
+          },
+          {
+            "word": "FRUIT",
+            "r": 7,
+            "c": 0,
+            "dir": "H"
+          },
+          {
+            "word": "RAYON",
+            "r": 8,
+            "c": 0,
+            "dir": "H"
+          },
+          {
+            "word": "SAC",
+            "r": 9,
+            "c": 0,
+            "dir": "H"
+          }
+        ]
+      }
+    ],
+    "PAIRE_DATA": [
+      {
+        "category": "Identité",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne",
+        "isPair": true,
+        "card1": {
+          "emoji": "🃏",
+          "text": "Nom"
+        },
+        "card2": {
+          "emoji": "🃏",
+          "text": "Nom de famille"
+        },
+        "explication": "Dans un formulaire, le nom correspond au nom de famille."
+      },
+      {
+        "category": "Identité",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne",
+        "isPair": true,
+        "card1": {
+          "emoji": "🃏",
+          "text": "Prénom"
+        },
+        "card2": {
+          "emoji": "🃏",
+          "text": "Nom personnel"
+        },
+        "explication": "Le prénom est le nom personnel."
+      },
+      {
+        "category": "Adresse",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne",
+        "isPair": true,
+        "card1": {
+          "emoji": "🃏",
+          "text": "Adresse"
+        },
+        "card2": {
+          "emoji": "🃏",
+          "text": "Lieu où j’habite"
+        },
+        "explication": "L’adresse indique le lieu où la personne habite."
+      },
+      {
+        "category": "Contact",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne",
+        "isPair": true,
+        "card1": {
+          "emoji": "🃏",
+          "text": "Téléphone"
+        },
+        "card2": {
+          "emoji": "🃏",
+          "text": "Numéro pour appeler"
+        },
+        "explication": "Le téléphone permet d’appeler."
+      },
+      {
+        "category": "Document",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne",
+        "isPair": true,
+        "card1": {
+          "emoji": "🃏",
+          "text": "Signature"
+        },
+        "card2": {
+          "emoji": "🃏",
+          "text": "Nom écrit à la main"
+        },
+        "explication": "La signature valide le document."
+      },
+      {
+        "category": "Action",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne",
+        "isPair": true,
+        "card1": {
+          "emoji": "🃏",
+          "text": "Vérifier"
+        },
+        "card2": {
+          "emoji": "🃏",
+          "text": "Relire avant envoyer"
+        },
+        "explication": "Vérifier signifie relire avec attention."
+      },
+      {
+        "category": "Transports",
+        "difficulty": "easy",
+        "theme": "transports",
+        "isPair": true,
+        "card1": {
+          "emoji": "🃏",
+          "text": "Billet"
+        },
+        "card2": {
+          "emoji": "🃏",
+          "text": "Titre pour voyager"
+        },
+        "explication": "Le billet permet de voyager."
+      },
+      {
+        "category": "Identité",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne",
+        "isPair": false,
+        "card1": {
+          "emoji": "🃏",
+          "text": "Nom"
+        },
+        "card2": {
+          "emoji": "🃏",
+          "text": "Horaire"
+        },
+        "explication": "Le nom est une information personnelle, pas un horaire."
+      },
+      {
+        "category": "Identité",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne",
+        "isPair": false,
+        "card1": {
+          "emoji": "🃏",
+          "text": "Prénom"
+        },
+        "card2": {
+          "emoji": "🃏",
+          "text": "Ville"
+        },
+        "explication": "Le prénom et la ville sont deux informations différentes."
+      },
+      {
+        "category": "Adresse",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne",
+        "isPair": false,
+        "card1": {
+          "emoji": "🃏",
+          "text": "Adresse"
+        },
+        "card2": {
+          "emoji": "🃏",
+          "text": "Signature"
+        },
+        "explication": "L’adresse et la signature n’ont pas le même rôle."
+      },
+      {
+        "category": "Contact",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne",
+        "isPair": false,
+        "card1": {
+          "emoji": "🃏",
+          "text": "Téléphone"
+        },
+        "card2": {
+          "emoji": "🃏",
+          "text": "Rue"
+        },
+        "explication": "Le téléphone n’est pas un élément de l’adresse."
+      },
+      {
+        "category": "Action",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne",
+        "isPair": false,
+        "card1": {
+          "emoji": "🃏",
+          "text": "Vérifier"
+        },
+        "card2": {
+          "emoji": "🃏",
+          "text": "Envoyer sans lire"
+        },
+        "explication": "Vérifier veut dire relire, pas envoyer trop vite."
+      },
+      {
+        "category": "Transports",
+        "difficulty": "easy",
+        "theme": "transports",
+        "isPair": false,
+        "card1": {
+          "emoji": "🃏",
+          "text": "Billet"
+        },
+        "card2": {
+          "emoji": "🃏",
+          "text": "Médicament"
+        },
+        "explication": "Un billet sert à voyager, pas à se soigner."
+      }
+    ],
+    "PENDU_DATA": [
+      {
+        "word": "NOM",
+        "hint": "Nom de famille",
+        "category": "Identité",
+        "difficulty": "easy",
+        "theme": "administration"
+      },
+      {
+        "word": "PRENOM",
+        "hint": "Nom personnel",
+        "category": "Identité",
+        "difficulty": "easy",
+        "theme": "administration"
+      },
+      {
+        "word": "DATE",
+        "hint": "Jour, mois et année",
+        "category": "Document",
+        "difficulty": "easy",
+        "theme": "administration"
+      },
+      {
+        "word": "RUE",
+        "hint": "Nom de la voie dans une adresse",
+        "category": "Adresse",
+        "difficulty": "easy",
+        "theme": "administration"
+      },
+      {
+        "word": "VILLE",
+        "hint": "Commune où une personne habite",
+        "category": "Adresse",
+        "difficulty": "easy",
+        "theme": "administration"
+      },
+      {
+        "word": "PAYS",
+        "hint": "Exemple : Suisse, France, Italie",
+        "category": "Adresse",
+        "difficulty": "easy",
+        "theme": "administration"
+      },
+      {
+        "word": "PHOTO",
+        "hint": "Image demandée pour certains documents",
+        "category": "Document",
+        "difficulty": "easy",
+        "theme": "administration"
+      },
+      {
+        "word": "PAPIER",
+        "hint": "Mot courant pour parler d’un document",
+        "category": "Document",
+        "difficulty": "easy",
+        "theme": "administration"
+      },
+      {
+        "word": "EMAIL",
+        "hint": "Adresse électronique",
+        "category": "Contact",
+        "difficulty": "easy",
+        "theme": "administration"
+      },
+      {
+        "word": "SIGNER",
+        "hint": "Mettre sa signature",
+        "category": "Action",
+        "difficulty": "easy",
+        "theme": "administration"
+      },
+      {
+        "word": "GARE",
+        "hint": "Lieu où l’on prend le train",
+        "category": "Transports",
+        "difficulty": "easy",
+        "theme": "transports"
+      },
+      {
+        "word": "TRAM",
+        "hint": "Transport public qui circule en ville",
+        "category": "Transports",
+        "difficulty": "easy",
+        "theme": "transports"
+      },
+      {
+        "word": "BUS",
+        "hint": "Transport public qui circule sur la route",
+        "category": "Transports",
+        "difficulty": "easy",
+        "theme": "transports"
+      },
+      {
+        "word": "QUAI",
+        "hint": "Endroit où l’on attend le train",
+        "category": "Transports",
+        "difficulty": "easy",
+        "theme": "transports"
+      },
+      {
+        "word": "TRAIN",
+        "hint": "Transport qui circule sur les rails",
+        "category": "Transports",
+        "difficulty": "easy",
+        "theme": "transports"
+      },
+      {
+        "word": "SANTE",
+        "hint": "État physique et mental d’une personne",
+        "category": "Santé",
+        "difficulty": "easy",
+        "theme": "sante"
+      },
+      {
+        "word": "VACCIN",
+        "hint": "Protection contre certaines maladies",
+        "category": "Santé",
+        "difficulty": "easy",
+        "theme": "sante"
+      },
+      {
+        "word": "LOYER",
+        "hint": "Somme payée chaque mois pour habiter",
+        "category": "Logement",
+        "difficulty": "easy",
+        "theme": "logement"
+      },
+      {
+        "word": "BAIL",
+        "hint": "Contrat de location d’un logement",
+        "category": "Logement",
+        "difficulty": "easy",
+        "theme": "logement"
+      },
+      {
+        "word": "CLE",
+        "hint": "Objet utilisé pour ouvrir une porte",
+        "category": "Logement",
+        "difficulty": "easy",
+        "theme": "logement"
+      },
+      {
+        "word": "BALCON",
+        "hint": "Espace extérieur d’un appartement",
+        "category": "Logement",
+        "difficulty": "easy",
+        "theme": "logement"
+      },
+      {
+        "word": "BANQUE",
+        "hint": "Établissement qui gère l’argent des clients",
+        "category": "Banque",
+        "difficulty": "easy",
+        "theme": "banque"
+      },
+      {
+        "word": "COMPTE",
+        "hint": "Service bancaire utilisé pour gérer son argent",
+        "category": "Banque",
+        "difficulty": "easy",
+        "theme": "banque"
+      },
+      {
+        "word": "IBAN",
+        "hint": "Numéro international d’un compte bancaire",
+        "category": "Banque",
+        "difficulty": "easy",
+        "theme": "banque"
+      },
+      {
+        "word": "SOLDE",
+        "hint": "Argent disponible sur un compte",
+        "category": "Banque",
+        "difficulty": "easy",
+        "theme": "banque"
+      },
+      {
+        "word": "PRIX",
+        "hint": "Somme demandée pour acheter un produit",
+        "category": "Achats",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne"
+      },
+      {
+        "word": "PANIER",
+        "hint": "Objet utilisé pour mettre les produits au magasin",
+        "category": "Achats",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne"
+      },
+      {
+        "word": "COURSES",
+        "hint": "Achats de nourriture et de produits courants",
+        "category": "Achats",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne"
+      },
+      {
+        "word": "CAISSE",
+        "hint": "Endroit ou l on paie les achats",
+        "category": "Courses",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne"
+      },
+      {
+        "word": "PANIER",
+        "hint": "Objet pour porter les produits dans le magasin",
+        "category": "Courses",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne"
+      },
+      {
+        "word": "PRIX",
+        "hint": "Somme demandee pour acheter un produit",
+        "category": "Courses",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne"
+      },
+      {
+        "word": "DATE",
+        "hint": "Jour indique pour un rendez-vous",
+        "category": "Rendez-vous",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne"
+      },
+      {
+        "word": "HEURE",
+        "hint": "Moment precis de la journee",
+        "category": "Rendez-vous",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne"
+      },
+      {
+        "word": "RETARD",
+        "hint": "Situation ou on arrive apres l heure prevue",
+        "category": "Rendez-vous",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne"
+      }
+    ],
+    "QUIZ_DATA": [
+      {
+        "category": "Administration",
+        "difficulty": "easy",
+        "theme": "commune",
+        "question": "Que faut-il préparer avant d’aller au guichet ?",
+        "choices": [
+          "Le formulaire et les documents utiles",
+          "Une recette de cuisine",
+          "Un ticket de cinéma",
+          "Une clé USB vide"
+        ],
+        "answer": 0,
+        "explication": "Il faut préparer les documents demandés avant de se rendre au service."
+      },
+      {
+        "category": "Administration",
+        "difficulty": "easy",
+        "theme": "commune",
+        "question": "Pourquoi faut-il relire un formulaire ?",
+        "choices": [
+          "Pour éviter les erreurs",
+          "Pour le rendre plus long",
+          "Pour changer de langue",
+          "Pour gagner du temps à la caisse"
+        ],
+        "answer": 0,
+        "explication": "Relire permet de vérifier les informations importantes."
+      },
+      {
+        "category": "Transports",
+        "difficulty": "easy",
+        "theme": "transports",
+        "question": "Que faut-il vérifier avant de prendre le train ?",
+        "choices": [
+          "L’horaire et le quai",
+          "La couleur du bâtiment",
+          "Le prix du café",
+          "Le nom du chauffeur"
+        ],
+        "answer": 0,
+        "explication": "L’horaire et le quai sont les informations utiles avant le départ."
+      },
+      {
+        "category": "Transports",
+        "difficulty": "easy",
+        "theme": "transports",
+        "question": "Qu’est-ce qu’un billet ?",
+        "choices": [
+          "Un titre pour voyager",
+          "Une facture médicale",
+          "Une photo d’identité",
+          "Une clé de logement"
+        ],
+        "answer": 0,
+        "explication": "Le billet permet de voyager en transport public."
+      },
+      {
+        "category": "Santé",
+        "difficulty": "easy",
+        "theme": "sante",
+        "question": "Que faut-il apporter à un rendez-vous médical ?",
+        "choices": [
+          "Sa carte d’assuré",
+          "Son billet de train",
+          "Un panier de courses",
+          "Son code PIN"
+        ],
+        "answer": 0,
+        "explication": "La carte d’assuré est souvent demandée pour la facturation."
+      },
+      {
+        "category": "Santé",
+        "difficulty": "easy",
+        "theme": "sante",
+        "question": "Qu’est-ce qu’une ordonnance ?",
+        "choices": [
+          "Un document du médecin pour obtenir un médicament",
+          "Une attestation de domicile",
+          "Un horaire de bus",
+          "Un bulletin de salaire"
+        ],
+        "answer": 0,
+        "explication": "L’ordonnance permet à la pharmacie de délivrer certains médicaments."
+      },
+      {
+        "category": "Logement",
+        "difficulty": "easy",
+        "theme": "logement",
+        "question": "Que paie-t-on chaque mois pour habiter un logement ?",
+        "choices": [
+          "Le loyer",
+          "Le quai",
+          "Le formulaire",
+          "Le badge"
+        ],
+        "answer": 0,
+        "explication": "Le loyer est la somme payée chaque mois pour le logement."
+      },
+      {
+        "category": "Logement",
+        "difficulty": "easy",
+        "theme": "logement",
+        "question": "Qu’est-ce qu’un bail ?",
+        "choices": [
+          "Un contrat de location",
+          "Une ordonnance",
+          "Un billet",
+          "Une pièce d’identité"
+        ],
+        "answer": 0,
+        "explication": "Le bail est le contrat signé pour louer un logement."
+      },
+      {
+        "category": "Banque",
+        "difficulty": "easy",
+        "theme": "banque",
+        "question": "À quoi sert un IBAN ?",
+        "choices": [
+          "À faire un virement",
+          "À prendre le bus",
+          "À remplir un formulaire papier",
+          "À recevoir une ordonnance"
+        ],
+        "answer": 0,
+        "explication": "L’IBAN identifie le compte bancaire pour les virements."
+      },
+      {
+        "category": "Banque",
+        "difficulty": "easy",
+        "theme": "banque",
+        "question": "Que faut-il faire avant de payer une facture ?",
+        "choices": [
+          "Vérifier le montant",
+          "Jeter le document",
+          "Changer son nom",
+          "Fermer le compte"
+        ],
+        "answer": 0,
+        "explication": "Vérifier le montant évite les erreurs de paiement."
+      },
+      {
+        "category": "Travail",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne",
+        "question": "Que contient un dossier de candidature ?",
+        "choices": [
+          "Des documents pour postuler",
+          "Des médicaments",
+          "Des factures de logement",
+          "Des billets de train"
+        ],
+        "answer": 0,
+        "explication": "Le dossier de candidature contient les documents utiles pour postuler."
+      },
+      {
+        "category": "Courses",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne",
+        "question": "Ou paie-t-on les produits dans un magasin ?",
+        "choices": [
+          "A la caisse",
+          "Au quai",
+          "Au guichet communal",
+          "A l arret de bus"
+        ],
+        "answer": 0,
+        "explication": "La caisse est l endroit ou le client paie ses achats."
+      },
+      {
+        "category": "Rendez-vous",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne",
+        "question": "Que faut-il faire si on ne peut pas venir a un rendez-vous ?",
+        "choices": [
+          "Prevenir le service ou la personne",
+          "Ne rien dire",
+          "Changer de logement",
+          "Acheter un billet"
+        ],
+        "answer": 0,
+        "explication": "Prevenir est la bonne chose a faire quand on ne peut pas venir."
+      },
+      {
+        "category": "Poste",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne",
+        "question": "Ou peut-on envoyer une lettre ?",
+        "choices": [
+          "A la poste",
+          "A la pharmacie",
+          "A la gare",
+          "Au quai"
+        ],
+        "answer": 0,
+        "explication": "La poste est le service utilise pour envoyer une lettre ou un colis."
+      },
+      {
+        "category": "Pharmacie",
+        "difficulty": "easy",
+        "theme": "sante",
+        "question": "Ou achete-t-on des medicaments ?",
+        "choices": [
+          "A la pharmacie",
+          "A la commune",
+          "Au guichet de gare",
+          "A la banque"
+        ],
+        "answer": 0,
+        "explication": "La pharmacie est le lieu pour acheter des medicaments."
+      },
+      {
+        "category": "Commune",
+        "difficulty": "easy",
+        "theme": "commune",
+        "question": "Ou va-t-on pour certaines demarches administratives locales ?",
+        "choices": [
+          "A la commune",
+          "Au supermarche",
+          "A l hopital",
+          "Au restaurant"
+        ],
+        "answer": 0,
+        "explication": "La commune gere de nombreuses demarches administratives locales."
+      }
+    ],
+    "VRAI_FAUX_DATA": [
+      {
+        "category": "Administration",
+        "difficulty": "easy",
+        "theme": "commune",
+        "statement": "Avant d’aller au guichet, il est utile de vérifier les horaires d’ouverture.",
+        "answer": true,
+        "explication": "Cela évite un déplacement inutile."
+      },
+      {
+        "category": "Administration",
+        "difficulty": "easy",
+        "theme": "commune",
+        "statement": "On peut remplir un formulaire sans le relire.",
+        "answer": false,
+        "explication": "Relire permet de corriger les erreurs."
+      },
+      {
+        "category": "Transports",
+        "difficulty": "easy",
+        "theme": "transports",
+        "statement": "Il est utile de vérifier l’horaire et le quai avant de prendre le train.",
+        "answer": true,
+        "explication": "Ces informations permettent de partir au bon endroit et au bon moment."
+      },
+      {
+        "category": "Transports",
+        "difficulty": "easy",
+        "theme": "transports",
+        "statement": "Un billet n’est jamais nécessaire pour voyager.",
+        "answer": false,
+        "explication": "Un titre de transport est souvent nécessaire."
+      },
+      {
+        "category": "Santé",
+        "difficulty": "easy",
+        "theme": "sante",
+        "statement": "En Suisse, le numéro des urgences médicales est le 144.",
+        "answer": true,
+        "explication": "Le 144 est le bon numéro pour une urgence médicale."
+      },
+      {
+        "category": "Santé",
+        "difficulty": "easy",
+        "theme": "sante",
+        "statement": "Il est utile d’apporter sa carte d’assuré au rendez-vous médical.",
+        "answer": true,
+        "explication": "Elle peut être demandée pour la facturation."
+      },
+      {
+        "category": "Logement",
+        "difficulty": "easy",
+        "theme": "logement",
+        "statement": "Le loyer est le montant payé chaque mois pour habiter un logement.",
+        "answer": true,
+        "explication": "C’est la définition du loyer."
+      },
+      {
+        "category": "Logement",
+        "difficulty": "easy",
+        "theme": "logement",
+        "statement": "Le bail est un contrat de location.",
+        "answer": true,
+        "explication": "Le bail fixe les conditions de location."
+      },
+      {
+        "category": "Banque",
+        "difficulty": "easy",
+        "theme": "banque",
+        "statement": "L’IBAN sert à identifier un compte pour les virements.",
+        "answer": true,
+        "explication": "Il permet d’effectuer ou de recevoir un virement."
+      },
+      {
+        "category": "Banque",
+        "difficulty": "easy",
+        "theme": "banque",
+        "statement": "Une banque peut demander le code PIN par e-mail.",
+        "answer": false,
+        "explication": "Une banque ne demande jamais un code secret par e-mail."
+      },
+      {
+        "category": "Travail",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne",
+        "statement": "Un dossier de candidature contient des documents pour postuler.",
+        "answer": true,
+        "explication": "Il contient les documents demandés pour la candidature."
+      },
+      {
+        "category": "Courses",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne",
+        "statement": "La caisse est l endroit ou on paie ses achats.",
+        "answer": true,
+        "explication": "Dans un magasin, le paiement se fait a la caisse."
+      },
+      {
+        "category": "Rendez-vous",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne",
+        "statement": "Si on ne peut pas venir a un rendez-vous, il vaut mieux prevenir.",
+        "answer": true,
+        "explication": "Prevenir le service ou la personne est la bonne pratique."
+      },
+      {
+        "category": "Poste",
+        "difficulty": "easy",
+        "theme": "vie-quotidienne",
+        "statement": "On peut envoyer une lettre a la poste.",
+        "answer": true,
+        "explication": "La poste sert a envoyer lettres et colis."
+      },
+      {
+        "category": "Pharmacie",
+        "difficulty": "easy",
+        "theme": "sante",
+        "statement": "On va a la pharmacie pour acheter des medicaments.",
+        "answer": true,
+        "explication": "La pharmacie delivre les medicaments."
+      },
+      {
+        "category": "Commune",
+        "difficulty": "easy",
+        "theme": "commune",
+        "statement": "La commune gere certaines demarches administratives locales.",
+        "answer": true,
+        "explication": "La commune est un service administratif local."
+      }
+    ]
+  }
+}

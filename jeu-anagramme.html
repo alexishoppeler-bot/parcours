@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="fr-CH">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="assets/logo.png" type="image/png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/site.css">
+
+  <title>Anagramme | Parcours des jeux</title>
+  <link rel="stylesheet" href="css/pages/anagramme.css">
+</head>
+<body>
+  <div id="header-slot"></div>
+  <div class="layout">
+    <main class="main" id="main">
+      <div class="container">
+
+        <div class="page-header fade-up">
+          <div class="page-icon">🔤</div>
+          <h1>Anagrammes</h1>
+          <p>Remets les lettres dans le bon ordre pour former le mot.</p>
+        </div>
+
+        <!-- KPIs -->
+        <div class="kpi-grid fade-up delay-1">
+          <div class="kpi-card">
+            <div class="kpi-value" id="kpiCorrect">0</div>
+            <div class="kpi-label">Corrects</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-value" id="kpiErrors">0</div>
+            <div class="kpi-label">Erreurs</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-value" id="kpiXP">0</div>
+            <div class="kpi-label">XP gagnes</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-value" id="kpiAccuracy">—</div>
+            <div class="kpi-label">Precision</div>
+          </div>
+        </div>
+
+        <!-- Zone de jeu -->
+        <div class="game-zone fade-up delay-2" id="gameZone">
+          <div class="anagram-zone">
+            <div class="quiz-top">
+              <div class="quiz-progress-label">Progression <strong id="roundNum">1</strong> / <strong id="roundTotal">10</strong></div>
+              <div class="quiz-timer" id="ahSessionProgressText">0%</div>
+            </div>
+
+            <div class="series-progress" aria-live="polite" data-ah="1">
+              <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="ahSessionProgressBar">
+                <div class="progress-fill" id="ahSessionProgressFill" style="width:0%"></div>
+              </div>
+            </div>
+            <div class="category-pill-row"><span id="roundCategory" class="badge badge-blue"></span></div>
+
+            <div class="anagram-hint" id="anagramHint" aria-label="Piste">
+              <span class="anagram-hint-icon">💡</span>
+              <div class="anagram-hint-body">
+                <div class="anagram-hint-label">Piste</div>
+                <div class="anagram-hint-text" id="anagramHintText"></div>
+              </div>
+            </div>
+
+            <!-- Lettres melangees -->
+            <div class="letters-pool" id="lettersPool"></div>
+
+            <!-- Zone reponse -->
+            <div class="answer-zone" id="answerZone"></div>
+
+            <!-- Feedback -->
+            <div class="feedback-row">
+              <span class="feedback-msg" id="feedbackMsg"></span>
+            </div>
+
+            <!-- Actions -->
+            <div class="action-row">
+              <button class="btn btn-ghost btn-sm" id="btnErase" type="button">⌫ Effacer</button>
+              <button class="btn btn-ghost btn-sm" id="btnHint" type="button">💡 Indice</button>
+              <button class="btn btn-primary" id="btnValidate" type="button">Valider ✓</button>
+              <button class="btn btn-secondary" id="btnSkip" type="button" style="display:none;">Passer →</button>
+            </div>
+
+            <!-- Info mot -->
+            <div class="word-info" id="wordInfo"></div>
+          </div>
+        </div>
+
+        <!-- Resultats finaux -->
+        <div class="result-zone fade-up" id="resultZone">
+          <div class="card card-accent card-lg" style="text-align:center;">
+            <div style="font-size:56px;margin-bottom:16px;" id="resEmoji">🎉</div>
+            <h2 style="font-family:var(--font-head);font-size:24px;font-weight:800;margin-bottom:8px;" id="resTitle">Exercice termine !</h2>
+            <p style="color:var(--text2);margin-bottom:28px;" id="resSubtitle">Voici vos resultats pour cette session.</p>
+            <div class="kpi-grid" style="margin-bottom:28px;">
+              <div class="kpi-card">
+                <div class="kpi-value" id="resCorrect">0</div>
+                <div class="kpi-label">Corrects</div>
+              </div>
+              <div class="kpi-card">
+                <div class="kpi-value" id="resErrors">0</div>
+                <div class="kpi-label">Erreurs</div>
+              </div>
+              <div class="kpi-card">
+                <div class="kpi-value" id="resXP">0</div>
+                <div class="kpi-label">XP</div>
+              </div>
+              <div class="kpi-card">
+                <div class="kpi-value" id="resAccuracy">—</div>
+                <div class="kpi-label">Precision</div>
+              </div>
+            </div>
+            <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:12px;">
+              <button class="btn btn-ghost btn-sm btn-share" type="button">Copier mon resume</button>
+            </div>
+            <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+              <button class="btn btn-primary btn-lg" id="btnNextExercise" type="button">Exercice suivant</button>
+              <button class="btn btn-secondary btn-lg" id="btnRestart" type="button">Recommencer</button>
+              <a href="accueil.html" class="btn btn-secondary btn-lg">← Accueil</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+    <div id="footer-slot"></div>
+  </div>
+
+  <!-- Modal succes -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <div class="modal-icon" id="modalIcon">🎉</div>
+      <div class="modal-title" id="modalTitle">Bravo !</div>
+      <div class="modal-text" id="modalText"></div>
+      <button class="btn btn-primary btn-lg" id="modalBtn" type="button">Continuer</button>
+    </div>
+  </div>
+
+  <script src="js/data/anagramme-data.js"></script>
+  <script src="js/score.js"></script>
+  <script src="js/exercises-config.js"></script>
+  <script src="js/stages.js"></script>
+  <script src="js/exercise-utils.js"></script>
+  <script src="js/automation.js"></script>
+  <script src="js/shared.js"></script>
+  <script src="js/ui.js"></script>
+  <script>
+  'use strict';
+
+  // Securite: verifier que les donnees sont chargees
+  if (!window.ANAGRAMME_DATA) {
+    console.error('ANAGRAMME_DATA non chargees - verifier le fichier js/data/anagramme-data.js');
+    window.ANAGRAMME_DATA = [];
+  }
+
+  /* ===== DONNEES ===== */
+  const WORDS = window.ANAGRAMME_DATA;
+
+  /* ===== ETAT ===== */
+  const PAGE_ID = 'jeu-anagramme';
+  const ROUNDS  = Array.isArray(WORDS) ? WORDS.length : 0;
+
+  let session = {
+    words:    [],
+    index:    0,
+    correct:  0,
+    errors:   0,
+    xp:       0,
+    typed:    0,
+    hintUsed: false,
+    answered: false,
+    startTime: 0,
+    totalTime: 0
+  };
+  let autoAdvanceTimer = null;
+
+  function clearAutoAdvance() {
+    if (autoAdvanceTimer) {
+      clearTimeout(autoAdvanceTimer);
+      autoAdvanceTimer = null;
+    }
+  }
+
+  function scheduleAutoAdvance(callback, delay = 1400) {
+    clearAutoAdvance();
+    autoAdvanceTimer = setTimeout(() => {
+      autoAdvanceTimer = null;
+      callback();
+    }, delay);
+  }
+
+  let xpRulesShown = false;
+
+  /* ===== UTILITAIRES ===== */
+  function shuffle(arr) {
+    const a = [...arr];
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  function scramble(word) {
+    let letters = word.split('');
+    let scrambled;
+    let attempts = 0;
+    do {
+      scrambled = shuffle(letters).join('');
+      attempts++;
+    } while (scrambled === word && attempts < 20);
+    return scrambled;
+  }
+
+  function updateProgressUI(done, total) {
+    const pct = total > 0 ? Math.round((done / total) * 100) : 0;
+    const safePct = Math.max(0, Math.min(100, pct));
+    document.getElementById('ahSessionProgressText').textContent = safePct + '%';
+    document.getElementById('ahSessionProgressFill').style.width = safePct + '%';
+    document.getElementById('ahSessionProgressBar').setAttribute('aria-valuenow', String(safePct));
+  }
+
+  /* ===== INIT SESSION ===== */
+  function startSession() {
+    clearAutoAdvance();
+    if (!ROUNDS) {
+      showToast('Aucun mot disponible dans les donnees.', 'error');
+      return;
+    }
+    startExerciseSession(PAGE_ID);
+    const selection = window.ContentProfiles
+      ? window.ContentProfiles.buildSessionPool(PAGE_ID, WORDS, { level: 'A2' })
+      : { items: shuffle(WORDS) };
+    session.words    = selection.items;
+    session.index    = 0;
+    session.correct  = 0;
+    session.errors   = 0;
+    session.xp       = 0;
+    session.typed    = 0;
+    session.hintUsed = false;
+    session.answered = false;
+    session.startTime = Date.now();
+    session.totalTime = 0;
+
+    document.getElementById('resultZone').classList.remove('show');
+    document.getElementById('gameZone').classList.remove('hidden');
+    updateKPIs();
+    updateProgressUI(0, session.words.length);
+
+    // Afficher les regles XP seulement a la premiere session
+    if (!xpRulesShown) {
+      xpRulesShown = true;
+      showXPRules('Anagramme');
+    }
+
+    loadRound();
+  }
+
+  /* ===== CHARGER UN MOT ===== */
+  function loadRound() {
+    clearAutoAdvance();
+    session.hintUsed = false;
+    session.answered = false;
+    answerTiles = [];
+
+    const entry     = session.words[session.index];
+    const scrambled = scramble(entry.word);
+
+    // Reinitialiser l'UI
+    document.getElementById('feedbackMsg').textContent = '';
+    document.getElementById('feedbackMsg').className = 'feedback-msg';
+    document.getElementById('wordInfo').classList.remove('show');
+    document.getElementById('answerZone').classList.remove('correct-anim', 'wrong-anim');
+    document.getElementById('btnSkip').style.display = 'none';
+    document.getElementById('btnValidate').disabled = false;
+    document.getElementById('btnHint').disabled = false;
+    document.getElementById('btnHint').textContent = '💡 Indice';
+
+    // Progression
+    document.getElementById('roundNum').textContent   = session.index + 1;
+    document.getElementById('roundTotal').textContent = session.words.length;
+    document.getElementById('roundCategory').textContent = entry.category;
+    document.getElementById('anagramHintText').textContent = entry.hint;
+
+    updateProgressUI(session.index, session.words.length);
+
+    // Vider les zones
+    const pool   = document.getElementById('lettersPool');
+    const answer = document.getElementById('answerZone');
+    pool.innerHTML   = '';
+    answer.innerHTML = '';
+
+    // Creer les tuiles de lettres
+    scrambled.split('').forEach((letter, i) => {
+      const tile = document.createElement('div');
+      tile.className   = 'letter-tile';
+      tile.textContent = letter;
+      tile.dataset.idx = i;
+      tile.addEventListener('click', () => pickLetter(tile, letter, i));
+      pool.appendChild(tile);
+    });
+  }
+
+  /* Suivi des tuiles selectionnees */
+  let answerTiles = []; // [{letter, poolIdx}]
+
+  function pickLetter(tile, letter, poolIdx) {
+    if (session.answered) return;
+    tile.classList.add('used');
+    answerTiles.push({ letter, poolIdx });
+
+    const atile = document.createElement('div');
+    atile.className   = 'answer-tile';
+    atile.textContent = letter;
+    atile.draggable = true;
+    atile.dataset.poolIdx = poolIdx;
+    atile.addEventListener('click', () => returnLetter(atile, poolIdx));
+    atile.addEventListener('dragstart', () => atile.classList.add('dragging'));
+    atile.addEventListener('dragend', () => atile.classList.remove('dragging'));
+    atile.addEventListener('dragover', event => event.preventDefault());
+    atile.addEventListener('drop', event => {
+      event.preventDefault();
+      const dragged = document.querySelector('.answer-tile.dragging');
+      if (!dragged || dragged === atile) return;
+      const zone = document.getElementById('answerZone');
+      zone.insertBefore(dragged, atile);
+      answerTiles = [...zone.children].map(tile => ({ letter: tile.textContent, poolIdx: Number(tile.dataset.poolIdx) }));
+    });
+    document.getElementById('answerZone').appendChild(atile);
+    if (answerTiles.length === session.words[session.index].word.length) {
+      setTimeout(() => { if (!session.answered) validate(); }, 220);
+    }
+  }
+
+  function returnLetter(atile, poolIdx) {
+    if (session.answered) return;
+    // Remettre la tuile dans le pool
+    const pool = document.getElementById('lettersPool');
+    const poolTile = pool.querySelector(`.letter-tile[data-idx="${poolIdx}"]`);
+    if (poolTile) poolTile.classList.remove('used');
+    // Retirer de la reponse (logique clarifiee)
+    answerTiles = answerTiles.filter(t => t.poolIdx !== poolIdx);
+    atile.remove();
+  }
+
+  /* ===== EFFACER TOUT ===== */
+  function eraseAll() {
+    if (session.answered) return;
+    document.querySelectorAll('.letter-tile').forEach(t => t.classList.remove('used'));
+    document.getElementById('answerZone').innerHTML = '';
+    answerTiles = [];
+    document.getElementById('feedbackMsg').textContent = '';
+  }
+
+  /* ===== INDICE ===== */
+  function giveHint() {
+    if (session.answered || session.hintUsed) return;
+    session.hintUsed = true;
+    const word = session.words[session.index].word;
+    const position = Math.min(answerTiles.length, word.length - 1);
+    showToast('Indice : la position ' + (position + 1) + ' contient « ' + word[position] + ' ».', 'info');
+    document.getElementById('btnHint').disabled = true;
+    document.getElementById('btnHint').textContent = '💡 Indice utilise';
+  }
+
+  /* ===== VALIDER ===== */
+  function validate() {
+    if (session.answered) return;
+
+    const entry  = session.words[session.index];
+    const answer = answerTiles.map(t => t.letter).join('');
+
+    if (answer.length === 0) {
+      showToast('Selectionne des lettres pour former un mot !', 'info');
+      return;
+    }
+
+    session.typed++;
+    session.answered = true;
+    document.getElementById('btnValidate').disabled = true;
+    const correct = answer === entry.word;
+
+    // Animer les tuiles reponse
+    document.querySelectorAll('.answer-tile').forEach(t => {
+      t.classList.add(correct ? 'correct' : 'wrong');
+    });
+
+    const fb = document.getElementById('feedbackMsg');
+    const az = document.getElementById('answerZone');
+
+    if (correct) {
+      session.correct++;
+      const xp = calcXP(1, 1) + (session.hintUsed ? 0 : 2);
+      session.xp += xp;
+      fb.textContent = '✅ Correct ! +' + xp + ' XP';
+      fb.className   = 'feedback-msg ok';
+      az.classList.add('correct-anim');
+      showToast('Bravo ! +' + xp + ' XP', 'success');
+      recordExerciseProgress(PAGE_ID, { correct: 1, typed: 1, errors: 0, xp });
+    } else {
+      session.errors++;
+      fb.textContent = '❌ Rate ! Le mot etait : ' + entry.word;
+      fb.className   = 'feedback-msg err';
+      az.classList.add('wrong-anim');
+      recordExerciseProgress(PAGE_ID, { correct: 0, typed: 1, errors: 1, xp: 0 });
+    }
+
+    // Afficher info mot
+    const info = document.getElementById('wordInfo');
+    info.innerHTML = '📖 <strong>' + entry.word + '</strong> - ' + entry.hint + ' <span class="badge badge-blue" style="margin-left:8px;">' + entry.category + '</span>';
+    info.classList.add('show');
+
+    updateKPIs();
+    updateProgressUI(session.index + 1, session.words.length);
+    scheduleAutoAdvance(nextRound);
+  }
+
+  /* ===== SUIVANT / TERMINER ===== */
+  function nextRound() {
+    answerTiles = [];
+    session.index++;
+    if (session.index >= session.words.length) {
+      finishSession();
+    } else {
+      loadRound();
+    }
+  }
+
+  /* ===== FIN DE SESSION ===== */
+  function finishSession() {
+    clearAutoAdvance();
+    endExerciseSession(PAGE_ID);
+
+    document.getElementById('gameZone').classList.add('hidden');
+    document.getElementById('resultZone').classList.add('show');
+
+    session.totalTime = Math.round((Date.now() - session.startTime) / 1000);
+    const accuracy = calcAccuracy(session.correct, session.typed);
+    document.getElementById('resCorrect').textContent  = session.correct;
+    document.getElementById('resErrors').textContent   = session.errors;
+    document.getElementById('resXP').textContent       = session.xp;
+    document.getElementById('resAccuracy').textContent = accuracy + '%';
+    updateProgressUI(session.words.length, session.words.length);
+
+    // Afficher temps si possible
+    const timeEl = document.querySelector('[id*="resTime"]');
+    if (timeEl) {
+      const mins = Math.floor(session.totalTime / 60);
+      const secs = session.totalTime % 60;
+      timeEl.textContent = mins > 0 ? `${mins}m ${secs}s` : `${secs}s`;
+    }
+
+    if (accuracy === 100) launchConfetti();
+  }
+
+  /* ===== KPIs ===== */
+  function updateKPIs() {
+    updateExerciseScoreKpis(session);
+  }
+
+  async function runAutomatedTest() {
+    const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+    startSession();
+    for (let guard = 0; guard < 120 && !document.getElementById('resultZone').classList.contains('show'); guard++) {
+      const entry = session.words[session.index];
+      eraseAll();
+      for (const letter of entry.word.split('')) {
+        const tile = [...document.querySelectorAll('.letter-tile:not(.used)')]
+          .find((el) => el.textContent === letter);
+        if (tile) tile.click();
+      }
+      validate();
+      if (session.answered) nextRound();
+      await wait(20);
+    }
+    return {
+      done: document.getElementById('resultZone').classList.contains('show'),
+      correct: document.getElementById('resCorrect').textContent,
+      accuracy: document.getElementById('resAccuracy').textContent
+    };
+  }
+
+  window.__GAME_TEST_API__ = { run: runAutomatedTest };
+
+  /* ===== EVENTS ===== */
+  document.addEventListener('DOMContentLoaded', () => {
+    setupNextExerciseButton(PAGE_ID);
+    document.getElementById('btnValidate').addEventListener('click', validate);
+    document.getElementById('btnErase').addEventListener('click', eraseAll);
+    document.getElementById('btnHint').addEventListener('click', giveHint);
+    document.getElementById('btnSkip').addEventListener('click', nextRound);
+    setupRestartButton(startSession);
+
+    // Raccourci clavier : Entree pour valider
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Enter' && !session.answered) validate();
+      if (e.key === 'Escape') eraseAll();
+    });
+
+    startSession();
+  });
+  </script>
+</body>
+</html>

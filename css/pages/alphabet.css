@@ -1,0 +1,338 @@
+﻿/* Auto-extrait depuis games/alphabet.html */
+    .container {
+      max-width: 1180px;
+    }
+
+/* ── KPI ── */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .container > .kpi-grid {
+      display: none;
+    }
+
+    .kpi-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 12px;
+      text-align: center;
+    }
+
+    .kpi-value {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .kpi-label {
+      font-size: 12px;
+      color: var(--text3);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      margin-top: 4px;
+    }
+
+    /* ── Sortable list ── */
+    .alphabet-zone {
+      background: var(--surface);
+      border: 1px solid rgba(190, 210, 235, 0.95);
+      border-radius: 26px;
+      padding: 22px;
+      margin-bottom: 20px;
+      min-height: 300px;
+      width: min(100%, 500px);
+      margin-inline: auto;
+      box-shadow: 0 10px 24px rgba(148, 163, 184, 0.14);
+    }
+
+    .alphabet-play-area {
+      width: min(100%, 820px);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 500px) minmax(220px, 1fr);
+      align-items: start;
+      gap: 20px;
+    }
+
+    .alphabet-play-area .alphabet-zone { width: 100%; margin: 0; }
+
+    .alphabet-guide {
+      position: sticky;
+      top: 92px;
+      padding: 20px;
+      overflow: hidden;
+      border: 2px solid var(--text);
+      border-radius: 22px;
+      background: #fffefb;
+      box-shadow: 4px 5px 0 rgba(23, 52, 49, 0.1);
+    }
+
+    .alphabet-guide-label {
+      display: block;
+      color: var(--primary);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .alphabet-guide h2 { margin: 6px 0 0; color: var(--text); font-size: 24px; line-height: 1; }
+    .alphabet-guide p { margin: 10px 0 0; color: var(--text2); font-size: 13px; line-height: 1.45; }
+
+    .alphabet-track {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 5px;
+      margin-top: 18px;
+      padding: 10px;
+      border-radius: 16px;
+      background: var(--primary-light);
+    }
+
+    .alphabet-track::after {
+      content: "";
+      position: absolute;
+      top: 7px;
+      left: 7px;
+      width: calc((100% - 44px) / 6);
+      height: 28px;
+      border: 2px solid var(--text);
+      border-radius: 9px;
+      background: rgba(255,255,255,.72);
+      animation: alphabetGuideStep 5.2s steps(6, end) infinite;
+      pointer-events: none;
+    }
+
+    .alphabet-track span { position: relative; z-index: 1; display: grid; height: 28px; place-items: center; color: var(--text); font-size: 12px; font-weight: 900; }
+    .alphabet-guide-tip { display: grid; gap: 4px; margin-top: 16px; padding-top: 14px; border-top: 1px dashed rgba(23, 52, 49, .28); color: var(--text2); font-size: 12px; line-height: 1.35; }
+    .alphabet-guide-tip b { color: var(--primary); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+    .alphabet-accent-note { display: grid; gap: 4px; margin-top: 12px; padding: 10px 11px; border-radius: 12px; background: #fff0c8; color: var(--warning-ink); font-size: 12px; line-height: 1.35; }
+    .alphabet-accent-note b { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+
+    @keyframes alphabetGuideStep {
+      0%, 12% { transform: translate(0, 0); }
+      16%, 28% { transform: translate(calc(100% + 5px), 0); }
+      32%, 44% { transform: translate(calc(200% + 10px), 0); }
+      48%, 60% { transform: translate(calc(300% + 15px), 0); }
+      64%, 76% { transform: translate(calc(400% + 20px), 0); }
+      80%, 92% { transform: translate(calc(500% + 25px), 0); }
+      96%, 100% { transform: translate(0, 35px); }
+    }
+
+    .alphabet-mission {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .alphabet-mission-item {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      background: var(--bg2);
+    }
+
+    .alphabet-mission-item span {
+      width: 20px;
+      height: 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(50, 93, 169, 0.12);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+      flex: 0 0 auto;
+    }
+
+    .alphabet-mission-item strong {
+      color: var(--text1);
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .alphabet-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .alphabet-item {
+      background: #d8e2ef;
+      border: 1px solid #ced9e7;
+      border-radius: 18px;
+      padding: 18px 20px;
+      cursor: move;
+      user-select: none;
+      font-weight: 600;
+      color: #243246;
+      transition: all 0.2s;
+      touch-action: none;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.35);
+    }
+
+    .alphabet-item:hover {
+      border-color: #91a9cf;
+      box-shadow: 0 10px 20px rgba(148, 163, 184, 0.14);
+      transform: translateY(-1px);
+    }
+
+    .alphabet-item.dragging {
+      opacity: 0.6;
+      transform: scale(0.98);
+    }
+
+    .alphabet-item.over {
+      border-color: var(--accent);
+      background: var(--bg3);
+    }
+
+    .alphabet-feedback {
+      min-height: 48px;
+      margin: 0 0 16px;
+      padding: 12px 14px;
+      border-radius: var(--r-md);
+      background: var(--bg2);
+      color: var(--text2);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .alphabet-feedback.ok {
+      border: 1px solid rgba(52, 211, 153, 0.3);
+      background: rgba(52, 211, 153, 0.08);
+      color: var(--text1);
+    }
+
+    .alphabet-feedback.err {
+      border: 1px solid rgba(248, 113, 113, 0.28);
+      background: rgba(248, 113, 113, 0.08);
+      color: var(--text1);
+    }
+
+    .quiz-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .quiz-progress-label {
+      font-size: 13px;
+      color: var(--text2);
+    }
+
+    .quiz-progress-label strong {
+      color: var(--text1);
+    }
+
+    .quiz-timer {
+      font-family: var(--font-head);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text2);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      padding: 4px 12px;
+      transition: color 0.3s, border-color 0.3s;
+    }
+
+    .series-progress {
+      width: 100%;
+      margin: 0 0 18px;
+    }
+
+    .alphabet-modebar { display:flex; align-items:center; justify-content:space-between; gap:12px; margin:0 0 14px; }
+    .alphabet-modebar label { display:flex; align-items:center; gap:8px; color:var(--text2); font-size:14px; font-weight:700; cursor:pointer; }
+    .alphabet-modebar input { width:18px; height:18px; accent-color:var(--primary); }
+    #alpClock.urgent { color:var(--danger); border-color:var(--danger); animation:alpClockPulse .7s ease-in-out infinite alternate; }
+    @keyframes alpClockPulse { to { transform:scale(1.06); } }
+    @media (prefers-reduced-motion: reduce) { #alpClock.urgent { animation:none; } .alphabet-item { transition:none; } }
+
+    /* ── Result zone ── */
+    .result-zone {
+      display: none;
+    }
+
+    .result-zone.show {
+      display: block;
+    }
+
+    /* ── Action buttons ── */
+    .action-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+      justify-content: center;
+    }
+
+    .action-buttons .btn {
+      min-width: 140px;
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 600px) {
+      .alphabet-play-area { width: 100%; grid-template-columns: 1fr; gap: 14px; }
+      .alphabet-guide { position: static; }
+      .alphabet-zone {
+        padding: 16px;
+        min-height: 250px;
+        width: 100%;
+      }
+
+      .alphabet-mission {
+        grid-template-columns: 1fr;
+      }
+
+      .alphabet-item {
+        padding: 12px;
+        font-size: 14px;
+      }
+
+      .action-buttons {
+        flex-direction: column;
+      }
+
+      .action-buttons .btn {
+        width: 100%;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .kpi-card {
+        padding: 16px;
+      }
+
+      .kpi-value {
+        font-size: 28px;
+      }
+
+      .alphabet-zone {
+        padding: 28px;
+        min-height: 360px;
+      }
+
+      .alphabet-list {
+        gap: 12px;
+      }
+
+      .alphabet-item {
+        padding: 18px;
+        font-size: 15px;
+      }
+    }

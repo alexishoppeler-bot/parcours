@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr-CH">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1d5d57">
+  <link rel="icon" href="assets/logo.png" type="image/png">
+  <link rel="stylesheet" href="css/site.css">
+  <link rel="stylesheet" href="css/platform.css">
+  <title>Parcours B1</title>
+</head>
+<body class="platform-page level-b1" data-preferred-level="B1">
+  <a href="#parcours" class="skip-link">Aller au parcours</a>
+  <header class="platform-header">
+    <a href="accueil.html" class="platform-brand" aria-label="Accueil">
+      <span class="platform-brand-mark"><img src="assets/logo.png" alt=""></span>
+      <span>Parcours B1</span>
+    </a>
+    <div class="header-progress" aria-label="Progression globale">
+      <span><b id="completed-count">0</b>/<b id="total-games">12</b></span>
+      <div class="header-progress-track" aria-hidden="true"><span id="progress-bar"></span></div>
+      <span id="progress-percent">0%</span>
+    </div>
+    <span class="header-xp"><b id="header-xp">0</b> XP</span>
+  </header>
+  <main class="journey" id="parcours">
+    <section class="journey-intro" aria-labelledby="journey-title">
+      <p>B1</p>
+      <h1 id="journey-title">Parcours intermediaire</h1>
+    </section>
+    <aside class="journey-now" aria-label="Prochaine activite">
+      <span id="current-card-state">A jouer</span>
+      <a id="continue-link" href="jeu-alphabet.html"><strong id="continue-label">Alphabet</strong><i aria-hidden="true">&#8594;</i></a>
+    </aside>
+    <section class="route-map" aria-label="Parcours des jeux">
+      <div class="route-line" aria-hidden="true"><svg viewBox="0 0 700 1510" preserveAspectRatio="none" focusable="false"><path d="M350 44 C100 125 102 235 355 292 S605 460 355 545 S95 725 350 790 S605 955 350 1045 S95 1200 350 1275 S590 1405 350 1480" /></svg></div>
+      <a class="game-card route-bubble bubble-1" data-game="jeu-alphabet" href="jeu-alphabet.html"><span class="bubble-icon">A</span><strong>Alphabet</strong><span class="card-status" aria-hidden="true"></span></a>
+      <a class="game-card route-bubble bubble-2" data-game="jeu-pendu" href="jeu-pendu.html"><span class="bubble-icon">'</span><strong>Pendu</strong><span class="card-status" aria-hidden="true"></span></a>
+      <a class="game-card route-bubble bubble-3" data-game="jeu-mots-meles" href="jeu-mots-meles.html"><span class="bubble-icon">W</span><strong>Mots meles</strong><span class="card-status" aria-hidden="true"></span></a>
+      <a class="game-card route-bubble bubble-4" data-game="jeu-cherche-clique" href="jeu-cherche-clique.html"><span class="bubble-icon">+</span><strong>Cherche</strong><span class="card-status" aria-hidden="true"></span></a>
+      <a class="game-card route-bubble bubble-5" data-game="jeu-anagramme" href="jeu-anagramme.html"><span class="bubble-icon">Aa</span><strong>Anagramme</strong><span class="card-status" aria-hidden="true"></span></a>
+      <a class="game-card route-bubble bubble-6" data-game="jeu-apparier" href="jeu-apparier.html"><span class="bubble-icon">=</span><strong>Apparier</strong><span class="card-status" aria-hidden="true"></span></a>
+      <a class="game-card route-bubble bubble-7" data-game="jeu-paire" href="jeu-paire.html"><span class="bubble-icon">2</span><strong>Paires</strong><span class="card-status" aria-hidden="true"></span></a>
+      <a class="game-card route-bubble bubble-8" data-game="jeu-demeler" href="jeu-demeler.html"><span class="bubble-icon">S</span><strong>Demeler</strong><span class="card-status" aria-hidden="true"></span></a>
+      <a class="game-card route-bubble bubble-9" data-game="jeu-quiz" href="jeu-quiz.html"><span class="bubble-icon">Q</span><strong>Quiz</strong><span class="card-status" aria-hidden="true"></span></a>
+      <a class="game-card route-bubble bubble-10" data-game="jeu-classement" href="jeu-classement.html"><span class="bubble-icon">1.</span><strong>Classement</strong><span class="card-status" aria-hidden="true"></span></a>
+      <a class="game-card route-bubble bubble-11" data-game="jeu-mots-croises" href="jeu-mots-croises.html"><span class="bubble-icon">+</span><strong>Croises</strong><span class="card-status" aria-hidden="true"></span></a>
+      <a class="game-card route-bubble bubble-12" data-game="jeu-vrai-faux" href="jeu-vrai-faux.html"><span class="bubble-icon">V/F</span><strong>Vrai faux</strong><span class="card-status" aria-hidden="true"></span></a>
+      <div class="route-finish" aria-label="Fin du parcours">FIN</div>
+    </section>
+    <p class="journey-count" id="progress-hint"><span id="remaining-count">12</span> bulles a explorer</p>
+  </main>
+  <script src="js/score.js"></script>
+  <script src="js/automation.js"></script>
+  <script src="js/platform.js"></script>
+</body>
+</html>
